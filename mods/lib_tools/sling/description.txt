@@ -1,0 +1,1 @@
+Sling enables item stack and single item throwing of any item.

@@ -1,0 +1,12 @@
+gal
+default?
+stairs?
+walls?
+fire?
+beds?
+doors?
+farming?
+gui?
+lib_shapes?
+lib_materials?
+lib_ecology?

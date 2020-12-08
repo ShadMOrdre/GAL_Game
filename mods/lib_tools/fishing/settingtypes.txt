@@ -1,0 +1,6 @@
+#fising settings
+
+#[Fishing Enable (true / false]
+#Unused setting to enable mod.  Mod is always enabled and this setting is not used.
+
+fishing_enable (Enable fishing mod) bool true

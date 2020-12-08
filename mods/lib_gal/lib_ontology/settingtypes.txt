@@ -1,0 +1,8 @@
+#lib_ontology settings
+
+
+#If true, mod will provide tables for referencing nodes, groups, aliases and translations. Defaults to false.
+lib_ontology_enabled (If true, mod will provide tables for referencing nodes, groups, aliases and translations. true/false) bool false
+
+
+

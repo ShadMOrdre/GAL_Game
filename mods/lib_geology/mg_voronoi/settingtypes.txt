@@ -1,0 +1,8 @@
+#lib_mg_continental settings
+
+
+
+#Use dev mapgen.
+lib_mg_continental_enable (Enable mapgen.  true / false) bool false
+
+

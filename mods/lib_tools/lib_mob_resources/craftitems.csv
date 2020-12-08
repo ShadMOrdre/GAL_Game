@@ -1,0 +1,45 @@
+#Craft Item|Craft Description|Craft Image|Craft Groups
+#Food Stuff|||
+butter|Butter|lib_mob_resources_butter.png|
+cheese_wedge|Cheese Wedge|lib_mob_resources_cheese_wedge.png|
+cheese_block|Cheese Block|lib_mob_resources_cheeseblock.png|
+egg|Egg|lib_mob_resources_egg.png|
+egg_fried|Egg - Fried|lib_mob_resources_egg_fried.png|
+egg_yolk|Egg - Yolk|lib_mob_resources_egg_yolk.png|
+egg_gold|Egg - Golden|lib_mob_resources_egg_gold.png|
+honey|Honey|lib_mob_resources_honey.png|
+honey_block|Honey Block|lib_mob_resources_honey_block.png|
+meat_small_cooked|Meat Small - Cooked|lib_mob_resources_meat_cooked_small.png|
+meat_small_raw|Meat Small - Raw|lib_mob_resources_meat_raw_small.png|
+meat_large_cooked|Meat Large - Cooked|lib_mob_resources_meat_cooked_large.png|
+meat_large_raw|Meat Large - Raw|lib_mob_resources_meat_raw_large.png|
+meat_chicken_cooked|Meat - Chicken Cooked|lib_mob_resources_meat_chicken_cooked.png|
+meat_chicken_raw|Meat - Chicken Raw|lib_mob_resources_meat_chicken_raw.png|
+meat_pork_cooked|Meat - Pork Cooked|lib_mob_resources_meat_pork_cooked.png|
+meat_pork_raw|Meat - Pork Raw|lib_mob_resources_meat_pork_raw.png|
+meat_steak_cooked|Meat - Steak Cooked|lib_mob_resources_meat_steak_cooked.png|
+meat_steak_raw|Meat - Steak Raw|lib_mob_resources_meat_steak_raw.png|
+milk_bucket|Milk - Bucket|lib_mob_resources_milk_bucket.png|
+milk_glass|Milk - Glass|lib_mob_resources_milk_glass.png|
+meat_fish_raw|Meat - Fish Raw|lib_mob_resources_meat_fish_raw.png|
+#Non-Food Stuff|||
+animal_skin_hide|Animal Skin - Hide|lib_mob_resources_animal_skin_hide.png|
+animal_skin_pelt|Animal Skin - Pelt|lib_mob_resources_animal_skin_pelt.png|
+animal_skin_large|Animal Skin - Large|lib_mob_resources_animal_skin_large.png|
+animal_skin_small|Animal Skin - Small|lib_mob_resources_animal_small_skin.png|
+animal_skin_wool|Animal Skin - Wool|lib_mob_resources_animal_skin_wool.png|
+animal_skin_wool_mammoth|Animal Skin - Mammoth Wool|lib_mob_resources_animal_skin_wool_mammoth.png|
+bone|Bone|lib_mob_resources_bone.png|
+bonemeal|Bonemeal|lib_mob_resources_bone_meal.png|
+feather_chicken|Feather - Chicken|lib_mob_resources_animal_skin_feather_chicken.png|
+feather_crow|Feather - Crow|lib_mob_resources_animal_skin_feather_crow.png|
+nest|Nest|lib_mob_resources_nest.png|
+lantern_firefly|Firefly Lantern|lib_mob_resources_lantern_firefly.png|
+#Tools|||
+magic_lasso|Magic Lasso|lib_mob_resources_tool_magic_lasso.png|
+nametag|Name Tag|lib_mob_resources_tool_nametag.png|
+net|Net|lib_mob_resources_tool_net.png|
+saddle|Saddle|lib_mob_resources_tool_saddle.png|
+shears|Shears|lib_mob_resources_tool_shears.png|
+protector|Protector|lib_mob_resources_tool_protector.png|
+spawner|Spawner|lib_mob_resources_tool_spawner.png|

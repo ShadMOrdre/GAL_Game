@@ -1,0 +1,18 @@
+Building Essentials
+
+(to be lib_nodebox_shapes)
+
+Inspired by default:walls, Columnia, Castles, xdecor, and others, for their immense and invaluable creative value and the frustration of scrolling
+through their countless repetitive pages of the same shaped nodes.  With much love to their respective creators!
+
+This mod provides a library of nodebox shapes.  Types of shapes included are slabs, stairs, columns, fences, walls, beams, furniture, various custom shapes, as well as a library of general, simple and common shapes.  Currently there are 26 shapes to choose from, with a 4 step stair, and a multitextured fence available.  Also included, are nodes that are designed to be used as drop in replacements to build L-tree trees, using connected nodeboxes.
+
+Using a pencil and paper, one creates blueprints, which are then arranged in the craft grid to build
+various shape_nodes.  These shape_nodes can be placed in world, but are otherwise useless, unless used in the craft grid.
+
+In the craft grid, placing a shape_node, (in the center), and any stone, wood, tree, or glass node, (bottom center, directly below shape_node), from a supported mod gives the user a node of that type, shaped like the shape_node.
+
+Only the various shape_nodes appear in inventory, while the actual shaped nodes do not.  This prevents adding numerous
+unnecessary pages to a players inventory, while still granting additional gameplay value.
+
+My personal hope is that default fences, slabs, stairs, walls, and and other mods use this as a way to not only reduce inventory clutter, but to provide players with more artistic freedom.

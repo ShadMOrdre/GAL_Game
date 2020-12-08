@@ -1,0 +1,5 @@
+default?
+mobs
+mobs_animal
+farming?
+real_suffocation?

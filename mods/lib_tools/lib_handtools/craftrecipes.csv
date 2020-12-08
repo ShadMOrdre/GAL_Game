@@ -1,0 +1,19 @@
+#Recipe Output|Output Amnt|Recipe Type|Cooktime|Recipe|Replacements
+lib_handtools:tool_axe_flint||||lib_materials:mineral_flint,group:stick;,group:stick|
+lib_handtools:tool_knife_flint||||lib_materials:mineral_flint;group:stick|
+lib_handtools:tool_pick_stone||||group:stone,group:stone,group:stone;,group:stick,;,group:stick,|
+lib_handtools:tool_pick_bronze||||lib_materials:metal_bronze_ingot,lib_materials:metal_bronze_ingot,lib_materials:metal_bronze_ingot;,group:rod,;,group:rod,|
+lib_handtools:tool_pick_iron||||lib_materials:metal_iron_pig_ingot,lib_materials:metal_iron_pig_ingot,lib_materials:metal_iron_pig_ingot;,group:rod,;,group:rod,|
+lib_handtools:tool_pick_steel||||lib_materials:metal_steel_ingot,lib_materials:metal_steel_ingot,lib_materials:metal_steel_ingot;,group:rod,;,group:rod,|
+lib_handtools:tool_axe_bronze||||lib_materials:metal_bronze_ingot,lib_materials:metal_bronze_ingot,;lib_materials:metal_bronze_ingot,group:rod,;,group:rod,|
+lib_handtools:tool_axe_iron||||lib_materials:metal_iron_pig_ingot,lib_materials:metal_iron_pig_ingot,;lib_materials:metal_iron_pig_ingot,group:rod,;,group:rod,|
+lib_handtools:tool_axe_steel||||lib_materials:metal_steel_ingot,lib_materials:metal_steel_ingot,;lib_materials:metal_steel_ingot,group:rod,;,group:rod,|
+lib_handtools:tool_shovel_bronze||||,lib_materials:metal_bronze_ingot,;,group:rod,;,group:rod,|
+lib_handtools:tool_shovel_iron||||,lib_materials:metal_iron_pig_ingot,;,group:rod,;,group:rod,|
+lib_handtools:tool_shovel_steel||||,lib_materials:metal_steel_ingot,;,group:rod,;,group:rod,|
+lib_handtools:tool_sword_bronze||||,lib_materials:metal_bronze_ingot,;,lib_materials:metal_bronze_ingot,;,group:rod,|
+lib_handtools:tool_sword_iron||||,lib_materials:metal_iron_pig_ingot,;,lib_materials:metal_iron_pig_ingot,;,group:rod,|
+lib_handtools:tool_sword_steel||||,lib_materials:metal_steel_ingot,;,lib_materials:metal_steel_ingot,;,group:rod,|
+lib_handtools:tool_fire_sticks||||group:stick;group:stick;group:leaves|
+lib_handtools:tool_fire_sticks||||group:stick;group:stick;group:grass|
+lib_handtools:tool_fire_sticks||||group:stick;group:stick;group:plant|
