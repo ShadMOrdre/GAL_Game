@@ -1,0 +1,6 @@
+#game settings
+
+#Selects world  type.  Options are Default = 0, Valleys = 1, Continental = 2, Continental_v2 = 3, Islands = 4, Islands_x2 = 5, Islands_x25 = 6, Islands_x3 = 7, Archipelago = 8, Floatworld = 9
+
+gal_enabled (Enable GAL - Game Abstraction Layer) bool true
+game_world_type (World Type - Options are Default = 0, Valleys = 1, Continental = 2, Continental_v2 = 3, Islands = 4, Islands_x2 = 5, Islands_x25 = 6, Islands_x3 = 7, Archipelago = 8, Floatworld = 9) int 2
