@@ -184,7 +184,7 @@ minetest.register_tool(":gal:tool_flint_and_steel", {
 				nodedef.on_ignite(pointed_thing.under, user)
 			elseif minetest.get_item_group(node_under, "flammable") >= 1
 					and minetest.get_node(pointed_thing.above).name == "air" then
-				minetest.set_node(pointed_thing.above, {name = "lib_materials:fire_flame_basic"})
+				minetest.set_node(pointed_thing.above, {name = "gal:fire_flame_basic"})
 			end
 		end
 		if not (creative and creative.is_enabled_for
@@ -375,7 +375,7 @@ if fire_enabled then
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"air"})
 			if p then
-				minetest.set_node(p, {name = "lib_materials:fire_flame_basic"})
+				minetest.set_node(p, {name = "gal:fire_flame_basic"})
 			end
 		end,
 	})
@@ -384,7 +384,7 @@ if fire_enabled then
 
 	minetest.register_abm({
 		label = "Remove flammable nodes",
-		nodenames = {"lib_materials:fire_flame_basic"},
+		nodenames = {"gal:fire_flame_basic"},
 		neighbors = "group:flammable",
 		interval = 5,
 		chance = 18,

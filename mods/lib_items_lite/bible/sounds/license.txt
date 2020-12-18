@@ -1,0 +1,22 @@
+bible_open.ogg
+CC-BY-SA-3.0
+https://creativecommons.org/licenses/by/3.0/
+http://freesound.org/people/mlestn1/sounds/83239/
+original file name:
+83239__mlestn1__bookclosing.wav
+Author: mlestn1
+
+bible_page.ogg
+CC-BY-SA-3.0
+https://creativecommons.org/licenses/by/3.0/
+http://freesound.org/people/flag2/sounds/63318/
+original file name:
+63318__flag2__page-turn-please-turn-over-pto-paper-turn-over.wav
+Author: flag2
+
+bible_close.ogg
+CC0 1.0
+https://creativecommons.org/publicdomain/zero/1.0/
+http://freesound.org/people/Huminaatio/sounds/221910/
+original file name: 221910__huminaatio__closing-book.wav
+Author:Huminaatio

@@ -71,7 +71,7 @@ local voronoi_recursion_3 = gal.lib.voronoi.voronoi_recursion_3
 						--gal.lib.voronoi.edgemap[i].[last_closest_idx].pos = pos
 
 						edge = "edge"
-
+--[[
 						if vert_dist then
 							if vert_dist > last_dist then
 								vert_dist = last_dist
@@ -85,7 +85,7 @@ local voronoi_recursion_3 = gal.lib.voronoi.voronoi_recursion_3
 								gal.lib.voronoi.vertexmap[pos].n1_i = last_closest_idx
 								gal.lib.voronoi.vertexmap[pos].n2_i = vert_closest_idx
 
---[[
+-----------------
 								if not gal.lib.voronoi.vertexmap[i] then
 									gal.lib.voronoi.vertexmap[i] = {}
 								end
@@ -99,7 +99,7 @@ local voronoi_recursion_3 = gal.lib.voronoi.voronoi_recursion_3
 								end
 
 								gal.lib.voronoi.vertexmap[i].[last_closest_idx].[vert_closest_idx].pos = pos
---]]
+-------------------
 								edge = "vert"
 								
 							end
@@ -107,6 +107,7 @@ local voronoi_recursion_3 = gal.lib.voronoi.voronoi_recursion_3
 							vert_dist = this_dist
 							vert_closest_idx = i
 						end
+--]]
 					end
 				else
 					closest_cell_idx = i

@@ -1,5 +1,7 @@
+gal
 default?
 mobs
 mobs_animal
+tnt
 farming?
 real_suffocation?

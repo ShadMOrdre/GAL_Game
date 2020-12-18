@@ -163,6 +163,7 @@ gal.lib.shapes.register_basic_set = function(node_mat)
 
 	gal.lib.shapes.register_node(node_mat, "pane")
 	gal.lib.shapes.register_node(node_mat, "pane_centered")
+	gal.lib.shapes.register_node(node_mat, "pane_pillar")
 
 	gal.lib.shapes.register_node(node_mat, "wall_thick")
 	gal.lib.shapes.register_node(node_mat, "wall")

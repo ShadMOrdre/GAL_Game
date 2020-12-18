@@ -1,0 +1,6 @@
+gal
+gal_geology
+gal_ecology_plants
+gal_ecology_trees
+sfinv?
+creative?

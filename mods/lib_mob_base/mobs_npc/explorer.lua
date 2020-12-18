@@ -45,7 +45,7 @@ mobs:register_mob("mobs_npc:explorer",{
 		--mobs:face_pos(self,clicker:getpos())
 		face_pos(self,clicker:getpos())
 		--quests.treasure.tell_story(self.object:getpos())
-		minetest.chat_send_all("Explorer: I once came across a stairway to the depths, but... aaahhhh, I don't remember where...")
+		minetest.chat_send_all("Explorer: I once came across a stairway to the depths of hell.  Ooohh, the horrors I witnessed as I clawed my way out.  They still haunt my waking hours, but... aaahhhh, I don't remember where...")
 	end,
 	walk_chance = 1,
 	attack_type = "dogfight",
@@ -74,7 +74,7 @@ mobs:register_mob("mobs_npc:explorer",{
 	blood_amount = 35,
 	blood_offset = 0.25,
 	rewards = {
-		{chance=90, item="default:apple"},
+		{chance=90, item="gal:fruit_apple"},
 		{chance=60, item="experience:6_exp"},
 		{chance=50, item="potions:magic_replenish1"},
 	},

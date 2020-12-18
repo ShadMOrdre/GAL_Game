@@ -1,10 +1,10 @@
 -- eggs from mobs_dragon --------------------------------------------------------------------------
 	
 local dragonpairs = {
-	fire = {colour="red",nest="default:lava_source"},
-	lightning = {colour="black",nest="default:obsidian"},
-	poison = {colour="green",nest="default:cactus"},
-	ice = {colour="black",nest="default:ice"},
+	fire = {colour="red",nest="gal:liquid_lava_source"},
+	lightning = {colour="black",nest="gal:stone_obsidian"},
+	poison = {colour="green",nest="gal:cactus_green_column"},
+	ice = {colour="black",nest="gal:ice"},
 	great = {colour="great",nest=""},
 }
 

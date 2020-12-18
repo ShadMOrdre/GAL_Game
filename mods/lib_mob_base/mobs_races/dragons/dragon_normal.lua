@@ -45,7 +45,7 @@ mobs:register_mob("mobs_races:dragon", {
    jump = true,
    fly = true,
    drops = {
-	  {name = "mobs:lava_orb", chance = 1, min = 1, max = 1},
+	  --{name = "mobs:lava_orb", chance = 1, min = 1, max = 1},
    },
    fall_speed = 0,
    stepheight = 10,

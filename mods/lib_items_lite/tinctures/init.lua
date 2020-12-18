@@ -29,7 +29,7 @@ tinctures.register_potion("tinctures:healing", {
 		if not user or not user:is_player() then
 			return
 		end
-		cmsg.push_message_player(user, "[hp] + ".. tostring(10+lvl))
+		gal.player.cmsg.push_message_player(user, "[hp] + ".. tostring(10+lvl))
 		user:set_hp(user:get_hp()+10+lvl)
 		itemstack:take_item()
 		return itemstack
@@ -46,7 +46,7 @@ tinctures.register_potion("tinctures:jumping", {
 		user:set_physics_override({
 			gravity = 0.1,
 		})
-		cmsg.push_message_player(user, "[effect] + jump")
+		gal.player.cmsg.push_message_player(user, "[effect] + jump")
 
 		minetest.after(10.0+lvl*2, function(pl)
 			if not pl or not pl:is_player() then
@@ -55,7 +55,7 @@ tinctures.register_potion("tinctures:jumping", {
 			pl:set_physics_override({
 				gravity = 1,	
 			})
-			cmsg.push_message_player(pl, "[effect] - jump")
+			gal.player.cmsg.push_message_player(pl, "[effect] - jump")
 		end, user)
 		itemstack:take_item()
 		return itemstack
@@ -72,7 +72,7 @@ tinctures.register_potion("tinctures:running", {
 		user:set_physics_override({
 			speed = 3,
 		})
-		cmsg.push_message_player(user, "[effect] + speed")
+		gal.player.cmsg.push_message_player(user, "[effect] + speed")
 
 		minetest.after(10.0+lvl*2, function(pl)
 			if not pl or not pl:is_player() then
@@ -81,7 +81,7 @@ tinctures.register_potion("tinctures:running", {
 			pl:set_physics_override({
 				speed = 1,	
 			})
-			cmsg.push_message_player(pl, "[effect] - speed")
+			gal.player.cmsg.push_message_player(pl, "[effect] - speed")
 		end, user)
 		itemstack:take_item()
 		return itemstack

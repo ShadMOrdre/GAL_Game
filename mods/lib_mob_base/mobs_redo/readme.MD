@@ -17,11 +17,31 @@ Crafts:
  - Magic Lasso is similar to nets but with a better chance of picking up larger mobs.
  - Shears are used to right-click sheep and return 1-3 wool.
  - Protection Rune lets you protect tamed mobs from harm by other players
+ - Mob Fence and Fence Top (to stop mobs escaping/glitching through fences)
 
 Lucky Blocks: 9
 
 
 Changelog:
+- 1.54 - Simplified animal breeding function, added editable settings (thanks Wuzzy), Child mobs now take 20 mins to grow up, reverted to simple mob spawning with setting to use area checks, on_flop added, air_damage added.
+- 1.53 - Added 'on_map_load' settings to mobs:spawn so that mobs will only spawn when new areas of map are loaded.
+- 1.52 - Added 'mob_active_limit' in settings to set number of mobs in game,
+(default is 0 for unlimited), removed {immortal} from mob armor, fluid viscocity slows mobs
+- 1.51 - Added some node checks for dangerous nodes, jumping and falling tweaks, spawn area check (thx for idea wuzzy), re-enabled mob suffocation, add 'mob_nospawn_range' setting
+- 1.50 - Added new line_of_sight function that uses raycasting if mt5.0 is found,  (thanks Astrobe), dont spawn mobs if world anchor nearby (technic or simple_anchor mods), chinese local added
+- 1.49- Added mobs:force_capture(self, player) function, api functions now use metatables thanks to bell07
+- 1.48- Add mobs:set_velocity(self, velocity) global function
+- 1.47- Mob damage changes, min and max light level for damage added, ignition sources checked for lava damage
+- 1.46- Mobs only drop rare items when killed by player (drops.min = 0 makes them rare), code tweak, pathfinding no longer sees through walkable nodes
+- 1.45- Added Fence Top to add on top of any fence to stop mobs escaping, new line_of_sight tweaked by Astrobe
+- 1.44- Added ToolRanks support for swords when attacking mobs
+- 1.43- Better 0.4.16 compatibility, added general attack function and settings
+- 1.42- Added "all" option to immune_to table, tidied floating mobs to be less intensive
+- 1.41- Mob pathfinding has been updated thanks to Elkien3
+- 1.40- Updated to use newer functions, requires Minetest 0.4.16+ to work.
+- 1.39- Added 'on_breed', 'on_grown' and 'do_punch' custom functions per mob
+- 1.38- Better entity checking, nametag setting and on_spawn function added to mob registry, tweaked light damage
+- 1.37- Added support for Raymoo's CMI (common mob interface) mod: https://forum.minetest.net/viewtopic.php?f=9&t=15448
 - 1.36- Death check added, if mob dies in fire/lava/with lava pick then drops are cooked
 - 1.35- Added owner_loyal flag for owned mobs to attack player enemies, also fixed group_attack
 - 1.34- Added function to fly mob using directional movement (thanks D00Med for flying code)
@@ -48,7 +68,7 @@ Changelog:
 - 1.13- Added capture function (thanks blert2112) chance of picking up mob with hand; net; magic lasso, replaced some .x models with newer .b3d one's
 - 1.12- Added animal ownership so that players cannot steal your tamed animals
 - 1.11- Added flying mobs (and swimming), fly=true and fly_in="air" or "deafult:water_source" for fishy
-- 1,10- Footstep removed (use replace), explosion routine added for exploding mobs. 
+- 1,10- Footstep removed (use replace), explosion routine added for exploding mobs.
 - 1.09- reworked breeding routine, added mob rotation value, added footstep feature, added jumping mobs with sounds feature, added magic lasso for picking up animals
 - 1.08- Mob throwing attack has been rehauled so that they can damage one another, also drops and on_die function added
 - 1.07- Npc's can now be set to follow player or stand by using self.order and self.owner variables

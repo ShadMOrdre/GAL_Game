@@ -80,7 +80,7 @@ local function random_class(self)
 				self.damage = 3 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:shovel_steel",
+						name = "lib_handtools:tool_shovel_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -92,7 +92,7 @@ local function random_class(self)
 				self.damage = 3 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:shovel_bronze",
+						name = "lib_handtools:tool_shovel_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -104,7 +104,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:shovel_mese",
+						name = "lib_handtools:tool_shovel_mese",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -116,7 +116,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:shovel_diamond",
+						name = "lib_handtools:tool_shovel_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -132,7 +132,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:pick_steel",
+						name = "lib_handtools:tool_pick_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -144,7 +144,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:pick_bronze",
+						name = "lib_handtools:tool_pick_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -157,7 +157,7 @@ local function random_class(self)
 				self.damage = 5 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:pick_mese",
+						name = "lib_handtools:tool_pick_mese",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -170,7 +170,7 @@ local function random_class(self)
 				self.damage = 5 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:pick_diamond",
+						name = "lib_handtools:tool_pick_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -183,11 +183,8 @@ local function random_class(self)
 		self.water_damage = dps(self, 120)
 		self.light_damage = dps(self, 300)
 		self.runaway_from = {
-			"mobs:balrog",
-			"mobs_monster:dungeon_master",
-			"mobs_monster:fireball",
-			"mobs_monster:mese_monster",
-			"mobs_monster:mese_arrow"
+			"mobs_races:balrog",
+			"mobs_races:banshee",
 		}
 
 		if minetest.get_modpath("real_minerals") then
@@ -235,15 +232,15 @@ local function random_class(self)
 				"real_minerals:tetrahedrite_in_default_stone",
 			}
 		else
-			self.replace_what = {"default:stone_with_coal",
-				"default:stone_with_iron",
-				"default:stone_with_copper", "default:stone_with_tin",
-				"default:stone_with_mese", "default:stone_with_gold",
-				"default:stone_with_diamond"
+			self.replace_what = {"gal:ore_stone_with_coal",
+				"gal:ore_stone_with_iron",
+				"gal:ore_stone_with_copper", "gal:ore_stone_with_tin",
+				"gal:ore_stone_with_mese", "gal:ore_stone_with_gold",
+				"gal:ore_stone_with_diamond"
 			}
 		end
 
-		self.replace_with = "default:cobble"
+		self.replace_with = "gal:stone_cobble"
 		self.replace_rate = 4
 		self.replace_offset = -1
 
@@ -280,7 +277,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:axe_steel",
+						name = "lib_handtools:tool_axe_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -292,7 +289,7 @@ local function random_class(self)
 				self.damage = 4 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:axe_bronze",
+						name = "lib_handtools:tool_axe_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -304,7 +301,7 @@ local function random_class(self)
 				self.damage = 6 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:axe_mese",
+						name = "lib_handtools:tool_axe_stone",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -316,7 +313,7 @@ local function random_class(self)
 				self.damage = 7 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:axe_diamond",
+						name = "lib_handtools:tool_axe_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -333,7 +330,7 @@ local function random_class(self)
 				self.damage = 6 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:sword_steel",
+						name = "lib_handtools:tool_sword_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -345,7 +342,7 @@ local function random_class(self)
 				self.damage = 6 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:sword_bronze",
+						name = "lib_handtools:tool_sword_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -357,7 +354,7 @@ local function random_class(self)
 				self.damage = 7 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:sword_mese",
+						name = "lib_handtools:tool_sword_stone",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -369,7 +366,7 @@ local function random_class(self)
 				self.damage = 8 * mob_difficulty
 				self.drops = {
 					{
-						name = "default:sword_diamond",
+						name = "lib_handtools:tool_sword_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -384,7 +381,7 @@ local function random_class(self)
 		self.light_damage = dps(self, 300)
 		self.attack_monsters = true
 		self.runaway_from = {
-			"mobs:balrog"
+			"mobs_races:balrog"
 		}
 		self.sounds = {
 			war_cry = "mobs_dwarves_die_yell",
@@ -427,7 +424,7 @@ local function random_class(self)
 		self.shoot_offset = 1.9
 		self.shoot_interval = 3
 		self.runaway_from = {
-			"mobs:balrog"
+			"mobs_races:balrog"
 		}
 		self.sounds = {
 			war_cry = "mobs_dwarves_die_yell",
@@ -474,7 +471,7 @@ local function random_class(self)
 				self.damage = 4 + 2
 				self.drops = {
 					{
-						name = "default:axe_steel",
+						name = "lib_handtools:tool_axe_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -486,7 +483,7 @@ local function random_class(self)
 				self.damage = 4 + 2
 				self.drops = {
 					{
-						name = "default:axe_bronze",
+						name = "lib_handtools:tool_axe_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -498,7 +495,7 @@ local function random_class(self)
 				self.damage = 6 + 2
 				self.drops = {
 					{
-						name = "default:axe_mese",
+						name = "lib_handtools:tool_axe_stone",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -510,7 +507,7 @@ local function random_class(self)
 				self.damage = 7 + 2
 				self.drops = {
 					{
-						name = "default:axe_diamond",
+						name = "lib_handtools:tool_axe_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -526,7 +523,7 @@ local function random_class(self)
 				self.damage = 6 + 2
 				self.drops = {
 					{
-						name = "default:sword_steel",
+						name = "lib_handtools:tool_sword_steel",
 						chance = 4,
 						min = 1,
 						max = 1
@@ -538,7 +535,7 @@ local function random_class(self)
 				self.damage = 6 + 2
 				self.drops = {
 					{
-						name = "default:sword_bronze",
+						name = "lib_handtools:tool_sword_bronze",
 						chance = 5,
 						min = 1,
 						max = 1
@@ -550,7 +547,7 @@ local function random_class(self)
 				self.damage = 7 + 2
 				self.drops = {
 					{
-						name = "default:sword_mese",
+						name = "lib_handtools:tool_sword_stone",
 						chance = 6,
 						min = 1,
 						max = 1
@@ -562,7 +559,7 @@ local function random_class(self)
 				self.damage = 8 + 2
 				self.drops = {
 					{
-						name = "default:sword_diamond",
+						name = "lib_handtools:tool_sword_diamond",
 						chance = 7,
 						min = 1,
 						max = 1
@@ -604,8 +601,12 @@ end
 
 
 local function random_appearence(class)
+--local function random_appearence()
 
 	local class_and_tool = class
+	--local class_and_tool = random_class(self)
+		--random_class(self)
+
 	local appearence = {}
 	local chosen_skin = nil
 	local chosen_armour = "mobs_dwarves_trans.png"
@@ -767,12 +768,23 @@ local function random_appearence(class)
 
 	end
 	
-	table.insert(appearence, 1, chosen_skin)
-	table.insert(appearence, 2, chosen_armour)
-	table.insert(appearence, 3, chosen_weapon)
-	table.insert(appearence, 4, "mobs_dwarves_trans.png")
+	--table.insert(appearence, 1, chosen_skin)
+	--table.insert(appearence, 2, chosen_armour)
+	--table.insert(appearence, 3, chosen_weapon)
+	--table.insert(appearence, 4, "mobs_dwarves_trans.png")
+	--appearence = {
+	--	chosen_skin,
+	--	chosen_armour,
+	--	chosen_weapon,
+	--	"mobs_others_transparent.png"
+	--}
 
-	return appearence
+	--local appearence_string = {chosen_skin, chosen_armour, chosen_weapon, "mobs_others_transparent.png"}
+	local appearence_string = {chosen_skin, chosen_armour, chosen_weapon}
+
+	--return appearence
+	return appearence_string
+
 end
 
 
@@ -1143,8 +1155,9 @@ mobs:register_mob("mobs_races:dwarf", {
 	visual = "mesh",
 	visual_size = {x = 1.1, y = 0.85},
 	collisionbox = {-0.3, -.85, -0.3, 0.3, 0.68, 0.3},
-	textures = "",
-	mesh = "mobs_dwarves_character.b3d",
+	textures = "mobs_dwarves_dwarf.png",
+	--mesh = "mobs_dwarves_character.b3d",
+	mesh = "player_dwarf.x",
 	animation = {
 		stand_start = 0,
 		stand_end = 80,
@@ -1161,28 +1174,24 @@ mobs:register_mob("mobs_races:dwarf", {
 	},
 
 	on_spawn = function(self)
+
 		random_class(self)
-		self.textures = random_appearence(self.class_and_tool)
-		self.base_texture = self.textures
 
-		self.heal_counter = 4.0
-		self.injuried = false
+		self.object:set_properties({heal_counter = 4.0})
+		self.object:set_properties({initial_hp = math.random(self.hp_min, self.hp_max)})
+		self.object:set_properties({injuried = false})
+		self.object:set_properties({textures = random_appearence(self.class_and_tool)})
+		self.object:set_properties({base_texture = self.textures})
+		self.object:set_properties({given_name = random_string(math.random(2, 5))})
 
-		self.initial_hp = math.random(self.hp_min, self.hp_max)
-
-		self.object:set_hp(self.initial_hp)
-
-		self.given_name = random_string(math.random(2, 5))
-
-		self.object:set_properties({
-			heal_counter = self.heal_counter,
-			initial_hp = self.initial_hp,
-			injuried = self.injuried,
-			textures = self.textures,
-			base_texture = self.base_texture,
-			given_name = self.given_name
-		})
 		return true
+	end,
+
+	on_activate = function(self, staticdata, dtime_s)
+	 	self.object:set_properties({textures = self.texture})
+		self.object:set_properties({base_texture = self.base_texture})
+		--self.object:set_properties({collisionbox = self.collisionbox})
+		self.object:set_properties({visual_size = self.visual_size})
 	end,
 
 	on_rightclick = function(self, clicker)
@@ -1200,7 +1209,7 @@ mobs:register_mob("mobs_races:dwarf", {
 
 	on_replace = function(self, pos, oldnode, newnode)
 		local position = {x = pos.x, y = (pos.y +1), z = pos.z}
-		minetest.set_node(position, {name="default:torch", param2 = 1})
+		minetest.set_node(position, {name="torch:torch", param2 = 1})
 	end,
 
 	do_punch = function(self)
@@ -1261,20 +1270,35 @@ mobs:register_arrow("mobs_races:crossbow_bolt", {
 -- Spawner
 --
 
-mobs:spawn({
-	name = "mobs_races:dwarf",
-	nodes = {
-		"default:stone", "castle_masonry:pavement_brick",
-		"dfcaverns:dirt_with_cave_moss", "dfcaverns:cobble_with_floor_fungus"
-	},
-	neighbors = "air",
-	max_light = 13,
-	min_light = 0,
-	chance = 5000,
-	active_object_count = 2,
-	min_height = -31000,
-	max_height = -300
-})
+--ShadMOrdre's Mob Spawn function
+--function mobs:register_spawn2(name, nodes, neighbors, max_light, min_light, spawn_interval, chance, active_object_count, max_height, min_height, day_toggle)
+local function register_spawn2(name, nodes, neighbors, max_light, min_light, spawn_interval, chance, active_object_count, max_height, min_height, day_toggle)
+
+	mobs:spawn_specific(name, nodes, neighbors, min_light, max_light, spawn_interval, chance, active_object_count, min_height, max_height, day_toggle)
+end
+
+--mobs:spawn({
+--	name = "mobs_races:dwarf",
+--	nodes = {
+--		"default:stone", "castle_masonry:pavement_brick",
+--		"dfcaverns:dirt_with_cave_moss", "dfcaverns:cobble_with_floor_fungus"
+--	},
+--	neighbors = "air",
+--	max_light = 13,
+--	min_light = 0,
+--	chance = 5000,
+--	active_object_count = 2,
+--	min_height = -31000,
+--	max_height = -300
+--})
+
+	register_spawn2("mobs_races:dwarf", {"air"}, {"gal:stone"}, 14, 10, 64000, 2, 10, 31000, -31000)
+
+
+
+
+
+
 
 -- Spawn Egg
 
@@ -1285,8 +1309,8 @@ mobs:register_egg("mobs_races:dwarf", "Spawn Dwarf", "mobs_dwarves_icon.png")
 -- Alias
 --
 
-mobs:alias_mob("mobs:dwarf", "mobs_races:dwarf")
-mobs:alias_mob("mobs_dwarves:dwarf", "mobs_races:dwarf")
+--mobs:alias_mob("mobs:dwarf", "mobs_races:dwarf")
+--mobs:alias_mob("mobs_dwarves:dwarf", "mobs_races:dwarf")
 
 
 --

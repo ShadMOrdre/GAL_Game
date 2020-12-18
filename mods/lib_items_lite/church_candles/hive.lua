@@ -26,10 +26,10 @@ function hive.construct(pos)
 	image[5,0;1,1;church_candles_hive_layout.png]
 	list[context;honey;5,0;1,1;]
 	list[current_player;main;0,1.35;8,4;] ]]
-	..default.gui_bg
-	..default.gui_bg_img
-	..default.gui_slots
-	..default.get_hotbar_bg(0,1.35)
+	..gal.gui.gui_bg
+	..gal.gui.gui_bg_img
+	..gal.gui.gui_slots
+	..gal.gui.get_hotbar_bg(0,1.35)
 
 	meta:set_string("formspec", formspec)
 	meta:set_string("infotext", "Artificial Hive")
@@ -75,7 +75,7 @@ minetest.register_node("church_candles:hive_wild", {
 	sunlight_propagates = true,
 	walkable = true,
 	groups = {snappy = 3, oddly_breakable_by_hand = 2, flammable = 1, not_in_creative_inventory = 1},
-    sounds = default.node_sound_leaves_defaults(),
+    sounds = gal.node_sound_leaves_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
@@ -112,7 +112,7 @@ minetest.register_node("church_candles:hive", {
 	place_param2 = 0,
 	on_rotate = screwdriver.rotate_simple,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, not_in_creative_inventory = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = gal.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -166,7 +166,7 @@ minetest.register_node("church_candles:hive_empty", {
 	place_param2 = 0,
 	on_rotate = screwdriver.rotate_simple,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = gal.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -244,7 +244,7 @@ minetest.register_node("church_candles:honeycomb_block", {
 	inventory_image = "church_candles_honey_comb_block.png",
 	tiles = {"church_candles_honey_comb_block.png"},
 	groups = {oddly_breakable_by_hand = 3, dig_immediate = 1},
-	sounds = default.node_sound_dirt_defaults(),
+	sounds = gal.node_sound_dirt_defaults(),
 })
 --Jar of Honey
 minetest.register_node("church_candles:honey_jar", {
@@ -274,7 +274,7 @@ minetest.register_node("church_candles:honey_jar", {
 		},
 	},
 	groups = {vessel = 1, dig_immediate = 3, attached_node = 1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = gal.node_sound_glass_defaults(),
 	on_use = minetest.item_eat(10),
 })
 --Bottle of Honey
@@ -292,7 +292,7 @@ minetest.register_node("church_candles:honey_bottled", {
 		fixed = {-0.25, -0.5, -0.25, 0.25, 0.4, 0.25}
 	},
 	groups = {vessel = 1, dig_immediate = 3, attached_node = 1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = gal.node_sound_glass_defaults(),
 	on_use = minetest.item_eat(6, "vessels:glass_bottle"),
 })
 ------------

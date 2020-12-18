@@ -33,7 +33,7 @@ function gal.player.experience.exp_to_items(exp)
 		local ef = math.floor(remaining / ee)
 		remaining = remaining % ee
 		if ef > 0 then
-			table.insert(exp_table, ItemStack("experience:"..tostring(ee).."_exp " .. tostring(ef)))
+			table.insert(exp_table, ItemStack("gal:"..tostring(ee).."_exp " .. tostring(ef)))
 		end
 	end
 	return exp_table

@@ -273,7 +273,7 @@ minetest.register_node("lib_handtools:bonfire", {
 			end
 			minetest.chat_send_player( puncher:get_player_name(), S('Your @1 has been repaired successfully.', tool_desc))
 			if wield_name == "lib_handtools:tool_rock" then
-				if tool_name == "lib_materials:tool_rock" then
+				if tool_name == "gal:tool_rock" then
 					inv:set_stack("input", 1, "lib_handtools:tool_rock_chipper")
 				end
 				if tool_name == "lib_handtools:tool_rock_chipper" then
@@ -382,9 +382,34 @@ minetest.register_lbm({
 minetest.register_craft({
 	output = "lib_handtools:bonfire",
 	recipe = {
-                {"default:steel_ingot","default:steel_ingot","default:steel_ingot"},
-                {'',                   "default:steel_ingot",''                   },
-                {"default:steel_ingot","default:steel_ingot","default:steel_ingot"} },
+                {"gal:metal_steel_ingot","gal:metal_steel_ingot","gal:metal_steel_ingot"},
+                {'',                   "gal:metal_steel_ingot",''                   },
+                {"gal:metal_steel_ingot","gal:metal_steel_ingot","gal:metal_steel_ingot"} },
 })
 
+
+-- torchdecay
+-- burntime equals half a night
+
+minetest.register_abm({
+	nodenames = {"lib_handtools:bonfire"},
+	interval = 18,
+	chance = 1,
+	action = function(pos, node)
+		local meta = minetest.env:get_meta(pos)
+		local decay = meta:get_int("decay")
+		if not decay then
+			meta:set_int("decay", 1)
+			return
+		end
+		if decay >= math.random(36, 44) then
+			node.name = "lib_handtools:bonfire_unlit"
+			minetest.env:add_node(pos, node)
+			meta:set_int("decay", 0)
+			return
+		end
+		decay = decay + 1
+		meta:set_int("decay", decay)
+	end
+})
 

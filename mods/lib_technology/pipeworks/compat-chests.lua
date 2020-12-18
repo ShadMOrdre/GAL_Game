@@ -111,7 +111,7 @@ override_protected = {
 		pipeworks.after_place(pos)
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		if not game.can_interact_with_node(clicker, pos) then
+		if not gal.can_interact_with_node(clicker, pos) then
 			return itemstack
 		end
 
@@ -214,7 +214,7 @@ override_protected_open.tube = table.copy(override_protected.tube)
 override_protected_open.tube.connect_sides = table.copy(override_protected.tube.connect_sides)
 override_protected_open.tube.connect_sides.top = nil
 
-override_protected.tiles = { -- Rearranged according to the chest registration in Minetest_Game.
+override_protected.tiles = { -- Rearranged according to the chest registration in Minetest_gal.
 	"default_chest_top.png"..tube_entry,
 	"default_chest_top.png"..tube_entry,
 	"default_chest_side.png"..tube_entry.."^[transformFX",

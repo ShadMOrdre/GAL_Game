@@ -44,7 +44,7 @@ mobs_races.dragon.on_rc = function(self, clicker)
 	if mobs:feed_tame(self, clicker, 1, false, false) then
 		return
 	end
-	dmobs.dragon.ride(self, clicker)
+	mobs_races.dragon.ride(self, clicker)
 end
 
 mobs_races.dragon.do_custom = function(self, dtime)

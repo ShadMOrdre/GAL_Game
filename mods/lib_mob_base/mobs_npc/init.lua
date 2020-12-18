@@ -26,6 +26,7 @@ end
 mobs.intllib = S
 
 dofile(mobs_npc.path .. "/utils.lua")  --From Adventuretest
+dofile(mobs_npc.path .. "/npc_appearance.lua") -- TenPlus1
 
 -- NPC
 dofile(mobs_npc.path .. "/npc.lua") -- TenPlus1
@@ -34,10 +35,6 @@ dofile(mobs_npc.path .. "/trader.lua")  --From Farlands
 dofile(mobs_npc.path .. "/builder.lua")  --From Adventuretest
 dofile(mobs_npc.path .. "/soldier.lua")  --From Adventuretest
 --dofile(path .. "/igor.lua")    TO BE USED AS STUB FOR NPCF DECO AND NPCF INFO NPCs.
-
-dofile(mobs_npc.path.."/throwing.lua")
-dofile(mobs_npc.path.."/arrow.lua")
-dofile(mobs_npc.path.."/fire_arrow.lua")
 
 
 dofile(mobs_npc.path.."/barbarians.lua")
@@ -49,6 +46,7 @@ dofile(mobs_npc.path.."/kids.lua")
 
 dofile(mobs_npc.path.."/spawner.lua")
 
+dofile(mobs_npc.path .. "/mobs_npc_tool.lua") -- TenPlus1
 
 dofile(mobs_npc.path .. "/lucky_block.lua")
 
@@ -102,7 +100,6 @@ minetest.register_node("mobs_npc:beacon", {
 	},
 	use_texture_alpha = true,
 	groups = {cracky=1, oddly_breakeable_by_hand=1},
-	--sounds = default.node_sound_glass_defaults()
 	sounds = gal.node_sound_glass_defaults()
 })
 

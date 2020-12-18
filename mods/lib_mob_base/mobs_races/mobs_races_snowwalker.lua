@@ -70,24 +70,17 @@ local function random_appearence()
 		"mobs_others_crystal_axe.png"
 	}
 
-	local ARMOUR = "mobs_others_chestplate_crystal.png" ..
-		"^" .. "mobs_others_leggings_crystal.png" ..
-		"^" .. "mobs_others_boots_crystal.png"
-
-	local ARMOUR_HELMET = "mobs_others_helmet_crystal.png" ..
+	local ARMOUR = "mobs_others_helmet_crystal.png" ..
 		"^" .. "mobs_others_chestplate_crystal.png" ..
-		"^" .. "mobs_others_leggings_crystal.png" ..
-		"^" .. "mobs_others_boots_crystal.png"
-
-	local ARMOUR_SHIELD = "mobs_others_chestplate_crystal.png" ..
 		"^" .. "mobs_others_leggings_crystal.png" ..
 		"^" .. "mobs_others_boots_crystal.png" ..
 		"^" .. "mobs_others_shield_crystal.png"
 
+	local ARMOUR_HELMET = "mobs_others_helmet_crystal.png"
+
+	local ARMOUR_SHIELD = "mobs_others_shield_crystal.png"
+
 	local ARMOUR_HELMET_SHIELD = "mobs_others_helmet_crystal.png" ..
-		"^" .. "mobs_others_chestplate_crystal.png" ..
-		"^" .. "mobs_others_leggings_crystal.png" ..
-		"^" .. "mobs_others_boots_crystal.png" ..
 		"^" .. "mobs_others_shield_crystal.png"
 
 	local armours = {
@@ -101,12 +94,9 @@ local function random_appearence()
 	chosen_armour = armours[math.random(1, 4)]
 	chosen_weapon = weapons[math.random(1, 2)]
 	
-	table.insert(appearence, 1, chosen_skin)
-	table.insert(appearence, 2, chosen_armour)
-	table.insert(appearence, 3, chosen_weapon)
-	table.insert(appearence, 4, "mobs_others_transparent.png")
+	local appearence_string = {chosen_skin, chosen_armour, chosen_weapon}
 
-	return appearence
+	return appearence_string
 end
 
 
@@ -132,8 +122,8 @@ minetest.register_tool("mobs_races:sword_obsidian", {
 minetest.register_craft({
 	output = "mobs_races:sword_obsidian",
 	recipe = {
-		{"default:obsidian"},
-		{"default:obsidian"},
+		{"gal:stone_obsidian"},
+		{"gal:stone_obsidian"},
 		{"group:stick"},
 	}
 })
@@ -165,7 +155,7 @@ mobs:register_mob("mobs_races:snow_walker", {
 	attack_animals = true,
 	group_attack = true,
 	attack_type = "dogfight",
-	specific_attack = {"player", "mobs_humans:human"},
+	specific_attack = {"player", "mobs_humans:human", "mobs_npc:npc", "mobs_npc:guard", "mobs_npc:archer"},
 	blood_amount = 0,
 	pathfinding = 0,
 	immune_to = {
@@ -180,34 +170,33 @@ mobs:register_mob("mobs_races:snow_walker", {
 	visual_size = {x = 0.95, y = 1.15,},
 	collisionbox = {-0.45, -1.2, -0.36, 0.45, 0.88, 0.36},
 	textures = {},
-	mesh = "mobs_others_character.b3d",
+	--mesh = "mobs_others_character.b3d",
+	mesh = "3d_armor_character.x",
 	animation = {
+		speed_normal = 30,
+		speed_run = 30,
 		stand_start = 0,
-		stand_end = 80,
-		stand_speed = 30,
+		stand_end = 79,
 		walk_start = 168,
-		walk_end = 188,
-		walk_speed = 30,
+		walk_end = 187,
 		run_start = 168,
-		run_end = 188,
-		run_speed = 35,
-		punch_start = 189,
-		punch_end = 199,
-		punch_speed = 30,
+		run_end = 187,
+		punch_start = 200,
+		punch_end = 219,
 	},
-	replace_what = {"default:dirt", "default:dirt_with_grass"},
-	replace_with = "default:dirt_with_snow",
+	replace_what = {"gal:dirt", "gal:dirt_with_grass"},
+	replace_with = "gal:dirt_with_snow",
 	replace_rate = 10,
 	replace_offset = -2,
 
 	on_spawn = function(self, pos)
-		self.light_damage = dps(self)
-		self.textures = random_appearence()
-		self.object:set_properties({
-			light_damage = self.light_damage,
-			textures = self.textures
-		})
+		self.object:set_properties({light_damage = dps(self)})
+		self.object:set_properties({textures = random_appearence()})
 		return true
+	end,
+
+	on_activate = function(self, staticdata, dtime_s)
+	 	self.object:set_properties({textures = self.texture})
 	end,
 
 	on_die = function(self, pos)
@@ -215,7 +204,7 @@ mobs:register_mob("mobs_races:snow_walker", {
 		local node_name = minetest.get_node(position).name
 		if (node_name == "air") then
 			minetest.set_node(position,
-				{name="default:river_water_flowing"})
+				{name="gal:liquid_water_river_flowing"})
 		end
 	end,
 })
@@ -224,7 +213,7 @@ mobs:register_mob("mobs_races:snow_walker", {
 --
 -- Snow Walkers spawning
 --
-
+--[[
 mobs:spawn({name = "mobs_races:snow_walker",
 	nodes = {
 	"gal:dirt_with_snow",
@@ -242,6 +231,8 @@ mobs:spawn({name = "mobs_races:snow_walker",
 	day_toggle = false
 })
 
+	mobs:register_egg("mobs_races:snow_walker", "Snow Walker", "lib_materials_mineral_diamond_block.png", 1)
+--]]
 
 --
 -- Aliases

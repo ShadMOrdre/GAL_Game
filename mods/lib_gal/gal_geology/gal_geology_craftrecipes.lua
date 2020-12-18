@@ -33,7 +33,15 @@ for i, cr in ipairs(gal.lib.csv.read("|", gal_geology.path .. "/gal_geology_craf
 			new_cr_def.cooktime = tonumber(ctime)
 		end
 	end
-
+--[[
+	if rec_type and rec_type ~= "" then
+		if ctime and ctime ~= "" then
+			if rec_type = "fuel" then
+				crecipe = cout_name
+			end
+		end
+	end
+--]]
 	if crecipe then
 		if crecipe ~= "" then
 			new_cr_def.recipe = {}
@@ -105,7 +113,14 @@ for i, cr in ipairs(gal.lib.csv.read("|", gal_geology.path .. "/gal_geology_craf
 			new_cr_def.recipe = temp_recipe
 		end
 	end
-
+--
+	if rec_type == "fuel" then
+		new_cr_def = {}
+		new_cr_def.type = rec_type
+		new_cr_def.recipe = cout_name
+		new_cr_def.burntime = tonumber(ctime)
+	end
+--
 	minetest.register_craft(new_cr_def)
 
 end

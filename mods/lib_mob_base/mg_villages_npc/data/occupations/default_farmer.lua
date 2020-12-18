@@ -8,22 +8,22 @@
 ---- afternoon.
 
 local farming_plants = {
-    "farming:cotton_1",
-    "farming:cotton_2",
-    "farming:cotton_3",
-    "farming:cotton_4",
-    "farming:cotton_5",
-    "farming:cotton_6",
-    "farming:cotton_7",
-    "farming:cotton_8",
-    "farming:wheat_1",
-    "farming:wheat_2",
-    "farming:wheat_3",
-    "farming:wheat_4",
-    "farming:wheat_5",
-    "farming:wheat_6",
-    "farming:wheat_7",
-    "farming:wheat_8"
+    "gal:plant_cotton_1",
+    "gal:plant_cotton_2",
+    "gal:plant_cotton_3",
+    "gal:plant_cotton_4",
+    "gal:plant_cotton_5",
+    "gal:plant_cotton_6",
+    "gal:plant_cotton_7",
+    "gal:plant_cotton_8",
+    "gal:plant_wheat_1",
+    "gal:plant_wheat_2",
+    "gal:plant_wheat_3",
+    "gal:plant_wheat_4",
+    "gal:plant_wheat_5",
+    "gal:plant_wheat_6",
+    "gal:plant_wheat_7",
+    "gal:plant_wheat_8"
 }
 
 -- Special program to find the entrance to the fields of the farm_tiny buildings

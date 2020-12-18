@@ -74,7 +74,7 @@ minetest.register_node("lib_books:bookshelf", {
 	end,
 	on_blast = function(pos)
 		local drops = {}
-		lib_books.get_inventory_drops(pos, "books", drops)
+		gal.get_inventory_drops(pos, "books", drops)
 		drops[#drops+1] = "lib_books:bookshelf"
 		minetest.remove_node(pos)
 		return drops

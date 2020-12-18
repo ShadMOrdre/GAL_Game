@@ -28,7 +28,7 @@ minetest.log(S("[MOD] lib_books:  License: ") .. S(lib_books.license) .. "")
 --minetest.log("[MOD] lib_books:  License: " .. lib_books.license .. "")
 
 	
-
+--[[
 --
 -- optimized helper to put all items in an inventory into a drops list
 --
@@ -44,7 +44,7 @@ minetest.log(S("[MOD] lib_books:  License: ") .. S(lib_books.license) .. "")
 			end
 		end
 	end
-
+--]]
 
 
 	dofile(lib_books.path_mod.."/lib_books_bookshelf.lua")

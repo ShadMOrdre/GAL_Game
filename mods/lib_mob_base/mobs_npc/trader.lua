@@ -4,21 +4,21 @@ local S = mobs.intllib
 mobs.travelling_merchant = {
 	items = {
 		--{item for sale, price, chance of appearing in trader's inventory}
-		{"default:apple 10", "default:gold_ingot 2", 10},
-		{"farming:bread 10", "default:gold_ingot 4", 5},
-		{"default:clay 10", "default:gold_ingot 2", 12},
-		{"default:brick 10", "default:gold_ingot 4", 17},
-		{"default:glass 10", "default:gold_ingot 4", 17},
-		{"default:obsidian 10", "default:gold_ingot 15", 50},
-		{"default:diamond 1", "default:gold_ingot 5", 40},
-		{"farming:wheat 10", "default:gold_ingot 2", 17},
-		{"default:tree 5", "default:gold_ingot 4", 20},
-		{"default:stone 10", "default:gold_ingot 8", 17},
-		{"default:desert_stone 10", "default:gold_ingot 8", 27},
-		{"default:sapling 1", "default:gold_ingot 1", 7},
-		{"default:pick_steel 1", "default:gold_ingot 2", 7},
-		{"default:sword_steel 1", "default:gold_ingot 2", 17},
-		{"default:shovel_steel 1", "default:gold_ingot 1", 17},
+		{"gal:fruit_apple 10", "gal:metal_gold_ingot 2", 10},
+		{"gal:food_bread 10", "gal:metal_gold_ingot 4", 5},
+		--{"default:clay 10", "gal:metal_gold_ingot 2", 12},
+		{"gal:stone_brick 10", "gal:metal_gold_ingot 4", 17},
+		{"gal:glass 10", "gal:metal_gold_ingot 4", 17},
+		{"gal:stone_obsidian 10", "gal:metal_gold_ingot 15", 50},
+		{"gal:mineral_diamond 1", "gal:metal_gold_ingot 5", 40},
+		{"gal:item_wheat 10", "gal:metal_gold_ingot 2", 17},
+		{"gal:tree_default_trunk 5", "gal:metal_gold_ingot 4", 20},
+		{"gal:stone 10", "gal:metal_gold_ingot 8", 17},
+		{"gal:stone_desert 10", "gal:metal_gold_ingot 8", 27},
+		{"gal:tree_default_sapling 1", "gal:metal_gold_ingot 1", 7},
+		{"lib_handtools:tool_pick_steel 1", "gal:metal_gold_ingot 2", 7},
+		{"lib_handtools:tool_sword_steel 1", "gal:metal_gold_ingot 2", 17},
+		{"lib_handtools:tool_shovel_steel 1", "gal:metal_gold_ingot 1", 17},
 	},
 	names = {
 		"James", "John", "Bill", "Tom", "David", "Ian", "Thomas", "Steven", "Eric", "Jack", "Frank", "Peter", "Adam", "	Carl", "Joe", "Bruce", "Philip", "Steve" 
@@ -28,21 +28,21 @@ mobs.travelling_merchant = {
 mobs.human = {
 	items = {
 		--{item for sale, price, chance of appearing in trader's inventory}
-		{"default:apple 10", "default:gold_ingot 2", 10},
-		{"farming:bread 10", "default:gold_ingot 4", 5},
-		{"default:clay 10", "default:gold_ingot 2", 12},
-		{"default:brick 10", "default:gold_ingot 4", 17},
-		{"default:glass 10", "default:gold_ingot 4", 17},
-		{"default:obsidian 10", "default:gold_ingot 15", 50},
-		{"default:diamond 1", "default:gold_ingot 5", 40},
-		{"farming:wheat 10", "default:gold_ingot 2", 17},
-		{"default:tree 5", "default:gold_ingot 4", 20},
-		{"default:stone 10", "default:gold_ingot 8", 17},
-		{"default:desert_stone 10", "default:gold_ingot 8", 27},
-		{"default:sapling 1", "default:gold_ingot 1", 7},
-		{"default:pick_steel 1", "default:gold_ingot 2", 7},
-		{"default:sword_steel 1", "default:gold_ingot 2", 17},
-		{"default:shovel_steel 1", "default:gold_ingot 1", 17},
+		{"gal:fruit_apple 10", "gal:metal_gold_ingot 2", 10},
+		{"gal:food_bread 10", "gal:metal_gold_ingot 4", 5},
+		--{"default:clay 10", "gal:metal_gold_ingot 2", 12},
+		{"gal:stone_brick 10", "gal:metal_gold_ingot 4", 17},
+		{"gal:glass 10", "gal:metal_gold_ingot 4", 17},
+		{"gal:stone_obsidian 10", "gal:metal_gold_ingot 15", 50},
+		{"gal:mineral_diamond 1", "gal:metal_gold_ingot 5", 40},
+		{"gal:item_wheat 10", "gal:metal_gold_ingot 2", 17},
+		{"gal:tree_default_trunk 5", "gal:metal_gold_ingot 4", 20},
+		{"gal:stone 10", "gal:metal_gold_ingot 8", 17},
+		{"gal:stone_desert 10", "gal:metal_gold_ingot 8", 27},
+		{"gal:tree_default_sapling 1", "gal:metal_gold_ingot 1", 7},
+		{"lib_handtools:tool_pick_steel 1", "gal:metal_gold_ingot 2", 7},
+		{"lib_handtools:tool_sword_steel 1", "gal:metal_gold_ingot 2", 17},
+		{"lib_handtools:tool_shovel_steel 1", "gal:metal_gold_ingot 1", 17},
 	},
 	names = {
 		"James", "John", "Bill", "Tom", "David", "Ian", "Thomas", "Steven", "Eric", "Jack", "Frank", "Peter", "Adam", "	Carl", "Joe", "Bruce", "Philip", "Steve" 
@@ -414,8 +414,8 @@ function mobs_trader(self, clicker, entity, race)
 		self.game_name, player))
 
 	minetest.show_formspec(player, "trade", "size[8,10;]"
-		.. gui.gui_bg_img
-		.. gui.gui_slots
+		.. gal.gui.gui_bg_img
+		.. gal.gui.gui_slots
 		.. "label[0,0;" .. S("Trader @1's stock:", self.game_name) .. "]"
 		.. "list[detached:" .. unique_entity_id .. ";goods;.5,.5;3,5;]"
 		.. "label[4.5,0.5;" .. S("Selection") .. "]"

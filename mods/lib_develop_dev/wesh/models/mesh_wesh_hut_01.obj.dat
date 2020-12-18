@@ -1,0 +1,11 @@
+return {
+	collision_box = {
+		type = "fixed",
+		fixed = { { -0.03125, -0.5, -0.28125, 0.1875, -0.25, -0.0625, }, },
+	},
+	description = "WESH_Hut_01",
+	variants = {
+		wool = "wool-72.png",
+		plain = "plain-16.png",
+	},
+}

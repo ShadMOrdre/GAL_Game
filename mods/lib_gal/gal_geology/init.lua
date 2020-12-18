@@ -166,6 +166,8 @@ minetest.log(S("[MOD] gal_geology:  Loading..."))
 
 	dofile(gal_geology.path.."/gal_geology_node_registration.lua")
 
+	dofile(gal_geology.path.."/gal_geology_testnode.lua")
+
 	--dofile(gal_geology.path.."/gal_geology_caves.lua")
 
 	dofile(gal_geology.path.."/gal_geology_liquid_containers.lua")

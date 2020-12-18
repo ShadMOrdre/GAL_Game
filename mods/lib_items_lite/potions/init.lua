@@ -24,7 +24,7 @@ local fly_potion1 = {
 			end
 }
 
-affects.registerAffect(fly_potion1)
+gal.player.affects.registerAffect(fly_potion1)
  
 local fly_potion2 = {
 		affectid = "fly2",
@@ -48,7 +48,7 @@ local fly_potion2 = {
 			end
 }
 
-affects.registerAffect(fly_potion2)
+gal.player.affects.registerAffect(fly_potion2)
 
 local fly_potion3 = {
 		affectid = "fly3",
@@ -72,7 +72,7 @@ local fly_potion3 = {
 			end
 }
 
-affects.registerAffect(fly_potion3)
+gal.player.affects.registerAffect(fly_potion3)
 
 local gravity_potion1 = {
 	affectid = "gravity1",
@@ -87,10 +87,10 @@ local gravity_potion1 = {
 				},
 			},
 	onremove = function(name, player, affectid)
-		physics.adjust_physics(player,{gravity=0.5})
+		gal.player.physics.adjust_physics(player,{gravity=0.5})
 		minetest.chat_send_player(name,"You feel gravity's firm grasp take hold once again!",false)
 	end
 }
-affects.registerAffect(gravity_potion1)
+gal.player.affects.registerAffect(gravity_potion1)
 
 dofile(potions.path.."/items.lua")

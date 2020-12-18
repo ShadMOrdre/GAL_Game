@@ -51,7 +51,7 @@ mobs:register_arrow("draconis:wyvern_fire_breath", {
 
 	-- node hit
 	hit_node = function(self, pos, node)
-		mobs:boom(self, pos, 1)
+		tnt:boom(self, pos, 1)
 		fire_breath(pos)
 	end
 })
@@ -147,7 +147,7 @@ mobs:register_mob("draconis:fire_wyvern", {
 
 })
 
-mobs:register_egg("draconis:fire_wyvern", S("Fire Wyvern"), "fire_basic_flame.png", 1)
+--mobs:register_egg("draconis:fire_wyvern", S("Fire Wyvern"), "fire_basic_flame.png", 1)
 
 --  Tamed Fire Wyvern by ElCeejo
 
@@ -342,7 +342,7 @@ self.saddle = true
 	end
 })
 
-mobs:register_egg("draconis:hatched_fire_wyvern", S("Tame Fire Wyvern"), "fire_basic_flame.png", 1)
+--mobs:register_egg("draconis:hatched_fire_wyvern", S("Tame Fire Wyvern"), "fire_basic_flame.png", 1)
 
 -- Fire Wyvern Egg by ElCeejo
 
@@ -363,7 +363,7 @@ minetest.register_node("draconis:fire_wyvern_egg", {
 	paramtype2 = "facedir",
 	groups = {snappy = 2},
 	--sounds = default.node_sound_stone_defaults(),
-	sounds = mobs_animal.node_sound_dirt_defaults(),
+	sounds = gal.node_sound_stone_defaults(),
 	drop = "draconis:fire_wyvern_egg",
 	on_construct = function(pos)
 

@@ -77,6 +77,9 @@ dofile(lib_forge.path_mod .. "/furnace.lua")
 dofile(lib_forge.path_mod .. "/dual_furnace.lua")
 dofile(lib_forge.path_mod .. "/blast_forge.lua")
 
+dofile(lib_forge.path_mod .. "/lib_forge_functions.lua")
+
+
 --[[
 minetest.register_alias("castle:anvil", "lib_forge:anvil")
 minetest.register_alias("anvil:anvil", "lib_forge:anvil")

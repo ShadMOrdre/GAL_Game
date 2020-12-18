@@ -513,6 +513,35 @@ minetest.register_craftitem("lib_handtools:mineral_silex", {
 		end
 	})
 	
+	local tinder = {
+		"gal:item_cotton",
+		"gal:item_paper",
+		"gal:mineral_coal_lump",
+	}
+	
+	function lib_handtools.strike_fire(user, pointed_thing)
+				if pointed_thing.type == "node" then
+					local n_pointed_above = minetest.env:get_node(pointed_thing.above)
+					local n_pointed_under = minetest.env:get_node(pointed_thing.under)
+	
+					for _,tinder in ipairs(tinder) do
+						if user:get_inventory():get_stack("main", user:get_wield_index()+1):get_name() == tinder then
+							user:get_inventory():remove_item("main", tinder)
+							if n_pointed_under.name == "torch:torch_unlit" then
+								n_pointed_under.name = "torch:torch"
+								minetest.env:add_node(pointed_thing.under, n_pointed_under)
+							elseif n_pointed_under.name == "lib_handtools:bonfire_unlit" then
+								minetest.env:add_node(pointed_thing.under, {name="lib_handtools:bonfire"})
+							elseif n_pointed_above.name == "air" then
+								minetest.env:add_node(pointed_thing.above, {name="gal:fire_basic_flame"})
+							end
+						end
+					end				
+				else
+					return
+				end
+	end
+	
 	minetest.register_tool("lib_handtools:tool_rock_silex_steel_striker", {
 		description = "Tool - Steel Fire Striker",
 		inventory_image = "lib_materials_tool_rock_silex_steel_striker.png",
@@ -526,7 +555,7 @@ minetest.register_craftitem("lib_handtools:mineral_silex", {
 			--snappy={times={[2]=2.00, [3]=1.20}, uses=30, maxlevel=1},
 		},
 		on_use = function(itemstack, user, pointed_thing)
-				stoneage.strike_fire(user, pointed_thing)
+				lib_handtools.strike_fire(user, pointed_thing)
 				itemstack:add_wear(65535/64)
 				return itemstack
 			end
@@ -1561,7 +1590,8 @@ minetest.register_craftitem("lib_handtools:mineral_silex", {
 	minetest.register_tool("lib_handtools:tool_key", {
 		description = "Key",
 		inventory_image = "lib_materials_tool_key.png",
-		groups = {key = 1, not_in_creative_inventory = 1},
+		--groups = {key = 1, not_in_creative_inventory = 1},
+		groups = {key = 1},
 		stack_max = 1,
 		on_place = function(itemstack, placer, pointed_thing)
 			local under = pointed_thing.under
@@ -1597,6 +1627,8 @@ minetest.register_craftitem("lib_handtools:mineral_silex", {
 			return nil
 		end
 	})
+
+	gal.key_node = "lib_handtools:tool_key"
 
 
 	minetest.register_tool("lib_handtools:tool_chisel_steel", {

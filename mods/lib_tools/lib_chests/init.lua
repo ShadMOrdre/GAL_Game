@@ -41,6 +41,8 @@ minetest.log(S("[MOD] lib_chests:  Loading..."))
 
 	dofile(lib_chests.path_mod .. "/lib_chests_connected.lua")
 
+	dofile(lib_chests.path_mod .. "/chest_functions.lua")
+
 
 	if minetest.global_exists("default") then
 		--Alias default chests to new definitions.

@@ -561,6 +561,42 @@ gal.lib.shapes.register_shape("pane_centered", {
 		},
 	},
 })
+gal.lib.shapes.register_shape("pane_pillar", {
+	description = S("Pillar with Wall"), 
+	shape_type = "connected",
+	node_box = {
+		type = "connected",
+		fixed = {
+			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625},
+		},
+		connect_front = {
+			{-0.0625, -0.5, -0.5,  0.0625, 0.5, -0.0625}
+		},
+		connect_left = {
+			{-0.5, -0.5, -0.0625, -0.0625, 0.5,  0.0625}
+		},
+		connect_back = {
+			{-0.0625, -0.5,  0.0625,  0.0625, 0.5,  0.5}
+		},
+		connect_right = {
+			{ 0.0625, -0.5, -0.0625,  0.5, 0.5,  0.0625}
+		},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625},
+		},
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, -0.5, -0.0625, 0.0625, 0.5, 0.0625},
+		},
+	},
+})
+
+
 
 gal.lib.shapes.register_shape("wall_thick", {
 	description = S("Thick Wall (0.75W)"), 

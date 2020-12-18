@@ -30,7 +30,7 @@ local combust = {
 							{
 								time=300,
 								emote = { chance=40, action = "thinks it's getting hot in here" },
-								place = { chance=70, node = "fire:basic_flame" }
+								place = { chance=70, node = "gal:fire_basic_flame" }
 							}
 				}
 }

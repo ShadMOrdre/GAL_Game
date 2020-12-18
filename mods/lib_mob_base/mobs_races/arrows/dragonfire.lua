@@ -29,14 +29,14 @@ minetest.register_entity(fname, {
 								local p = {x=pos.x+dx, y=pos.y, z=pos.z+dz}
 								local t = {x=pos.x+dx, y=pos.y+dy, z=pos.z+dz}
 								local n = minetest.env:get_node(p).name
-								if n ~= fname and n ~="default:dirt_with_grass" and n ~="default:dirt_with_dry_grass" and n ~="default:stone"  then	
+								if n ~= fname and n ~="gal:dirt_with_grass" and n ~="gal:dirt_with_grass_dry" and n ~="gal:stone"  then	
 									if minetest.registered_nodes[n].groups.flammable --[[or math.random(1, 100) <= 1]] then
 										minetest.env:set_node(t, {name=replace_node})
 									self.object:remove()
 									return
 									end
-									if ice and n == "default:water_source" then
-									minetest.env:set_node(t, {name="default:ice"})
+									if ice and n == "gal:liquid_water_source" then
+									minetest.env:set_node(t, {name="gal:ice"})
 									self.object:remove()
 									end
 								end

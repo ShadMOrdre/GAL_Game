@@ -67,9 +67,9 @@ gal.player.data.save_all = function(again)
 			gal.player.data.save_player(name)
 		end
 	end
-	if again == true then
-		minetest.after(1200,gal.player.data.save_all,true)
-	end
+	--if again == true then
+	--	minetest.after(1200,gal.player.data.save_all,true)
+	--end
 end
 
 gal.player.data.get = function(name,param)

@@ -11,7 +11,7 @@ function gal.player.energy.update_energy(p,name,dtime)
 		local p_stamina = gal.player.data.get_number(name,"stamina")
 		local sleep_hud = gal.player.data.get(name,"sleep_hud")
 
-		minetest.log("ToD:  " .. minetest.get_timeofday() .. "  |     CurDay:  " .. minetest.get_day_count() .. "  |")
+		--minetest.log("ToD:  " .. minetest.get_timeofday() .. "  |     CurDay:  " .. minetest.get_day_count() .. "  |")
 
 		if timesince >= 0.05 then
 			if lastpos ~= nil then

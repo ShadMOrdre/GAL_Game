@@ -2,8 +2,8 @@
 -- Npc by TenPlus1 converted for FLG Goblins :D
 
 mobs.goblin_drops = {
-	"default:pick_steel",  "default:sword_steel",
-	"default:shovel_steel", "farming:bread", "bucket:bucket_water"
+	"lib_handtools:tool_pick_steel",  "lib_handtools:tool_sword_steel",
+	"lib_handtools:tool_shovel_steel", "gal:food_bread", "gal:tool_bucket_water"
 }
 
 local debugging_goblins = true
@@ -76,18 +76,18 @@ mobs:register_mob("mobs_races:goblin_cobble", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:mossycobble",
+		{name = "gal:stone_cobble_mossy",
 		chance = 1, min = 1, max = 3},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
-		{name = "default:torch",
+		{name = "torch:torch",
 		chance = 3, min = 1, max = 10},
 	},
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
 	lifetimer = 360,
-	follow = {"default:diamond"},
+	follow = {"gal:mineral_diamond"},
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -108,8 +108,8 @@ mobs:register_mob("mobs_races:goblin_cobble", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -127,7 +127,7 @@ mobs:register_mob("mobs_races:goblin_cobble", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -154,8 +154,8 @@ mobs:register_mob("mobs_races:goblin_cobble", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 2, 5,
-		{"default:stone","default:desert_stone","default:torch"},
-		"default:mossycobble")
+		{"gal:stone","gal:stone_desert","torch:torch"},
+		"gal:stone_cobble_mossy")
 	end,
 })
 mobs:register_egg("mobs_races:goblin_cobble", "Goblin Egg (cobble)", "default_mossycobble.png", 1)
@@ -190,18 +190,18 @@ mobs:register_mob("mobs_races:goblin_digger", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:mossycobble",
+		{name = "gal:stone_cobble_mossy",
 		chance = 1, min = 1, max = 3},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
-		{name = "default:torch",
+		{name = "torch:torch",
 		chance = 3, min = 1, max = 10},
 	},
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
 	lifetimer = 360,
-	follow = {"default:diamond"},
+	follow = {"gal:mineral_diamond"},
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -222,8 +222,8 @@ mobs:register_mob("mobs_races:goblin_digger", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -241,7 +241,7 @@ mobs:register_mob("mobs_races:goblin_digger", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -268,7 +268,7 @@ mobs:register_mob("mobs_races:goblin_digger", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 2, 5,
-		{"default:dirt","default:gravel","default:stone", "default:desert_stone", "default:torch"},
+		{"gal:dirt","gal:stone_gravel","gal:stone", "gal:stone_desert", "torch:torch"},
 		"air")
 	end,
 })
@@ -305,17 +305,17 @@ mobs:register_mob("mobs_races:goblin_coal", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:coal_lump",
+		{name = "gal:mineral_coal_lump",
 		chance = 1, min = 1, max = 3},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
-		{name = "default:torch",
+		{name = "torch:torch",
 		chance = 3, min = 1, max = 10},
 	},
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
-	follow = {"default:diamond"},
+	follow = {"gal:mineral_diamond"},
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -336,8 +336,8 @@ mobs:register_mob("mobs_races:goblin_coal", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -355,7 +355,7 @@ mobs:register_mob("mobs_races:goblin_coal", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -382,7 +382,7 @@ mobs:register_mob("mobs_races:goblin_coal", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 10, 5,
-		{"default:torch", "default:stone_with_coal", "default:stone"},
+		{"torch:torch", "gal:stone_with_coal", "gal:stone"},
 		"air")
 	end,
 
@@ -420,9 +420,9 @@ mobs:register_mob("mobs_races:goblin_iron", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:iron_lump",
+		{name = "gal:metal_iron_lump",
 		chance = 1, min = 1, max = 3},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
 		{name = "default:pick_steel",
 		chance = 5, min = 1, max = 1},
@@ -430,7 +430,7 @@ mobs:register_mob("mobs_races:goblin_iron", {
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
-	follow = "default:diamond",
+	follow = "gal:mineral_diamond",
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -451,8 +451,8 @@ mobs:register_mob("mobs_races:goblin_iron", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -470,7 +470,7 @@ mobs:register_mob("mobs_races:goblin_iron", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -497,7 +497,7 @@ mobs:register_mob("mobs_races:goblin_iron", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 10, 5,
-		{"default:torch","default:stone_with_iron", "default:stone"},
+		{"torch:torch","gal:stone_with_iron", "gal:stone"},
 		"air")
 	end,
 })
@@ -534,9 +534,9 @@ mobs:register_mob("mobs_races:goblin_gold", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:gold_lump",
+		{name = "gal:metal_gold_lump",
 		chance = 1, min = 1, max = 3},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
 		{name = "default:gold_ingot",
 		chance = 5, min = 1, max = 1},
@@ -544,7 +544,7 @@ mobs:register_mob("mobs_races:goblin_gold", {
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
-	follow = "default:diamond",
+	follow = "gal:mineral_diamond",
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -565,8 +565,8 @@ mobs:register_mob("mobs_races:goblin_gold", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -584,7 +584,7 @@ mobs:register_mob("mobs_races:goblin_gold", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -611,7 +611,7 @@ mobs:register_mob("mobs_races:goblin_gold", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 10, 5,
-		{"default:torch","default:stone_with_gold", "default:stone"},
+		{"torch:torch","gal:stone_with_gold", "gal:stone"},
 		"air")
 	end,
 })
@@ -648,17 +648,17 @@ mobs:register_mob("mobs_races:goblin_diamond", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:pick_diamond",
+		{name = "lib_handtools:tool_pick_diamond",
 		chance = 1, min = 1, max = 1},
-		{name = "default:apple",
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 10},
-		{name = "default:diamond",
+		{name = "gal:mineral_diamond",
 		chance = 5, min = 1, max = 1},
 	},
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
-	follow = "default:diamond",
+	follow = "gal:mineral_diamond",
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -679,8 +679,8 @@ mobs:register_mob("mobs_races:goblin_diamond", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -698,7 +698,7 @@ mobs:register_mob("mobs_races:goblin_diamond", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -725,7 +725,7 @@ mobs:register_mob("mobs_races:goblin_diamond", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 10, 5,
-		{"default:torch","default:stone_with_diamond", "default:stone"},
+		{"torch:torch","gal:stone_with_diamond", "gal:stone"},
 		"air")
 	end,
 
@@ -762,9 +762,9 @@ mobs:register_mob("mobs_races:goblin_king", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:pick_mese",
-		chance = 1, min = 1, max = 1},
-		{name = "default:apple",
+		--{name = "lib_handtools:tool_pick_mese",
+		--chance = 1, min = 1, max = 1},
+		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 10},
 		{name = "default:mese_crystal",
 		chance = 5, min = 1, max = 1},
@@ -772,7 +772,7 @@ mobs:register_mob("mobs_races:goblin_king", {
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
-	follow = "default:diamond",
+	follow = "gal:mineral_diamond",
 	view_range = 10,
 	owner = "",
 	order = "follow",
@@ -793,8 +793,8 @@ mobs:register_mob("mobs_races:goblin_king", {
 		local name = clicker:get_player_name()
 
 		-- feed to heal goblin
-		if item:get_name() == "default:apple"
-		or item:get_name() == "farming:bread" then
+		if item:get_name() == "gal:fruit_apple"
+		or item:get_name() == "gal:food_bread" then
 
 			local hp = self.object:get_hp()
 			-- return if full health
@@ -812,7 +812,7 @@ mobs:register_mob("mobs_races:goblin_king", {
 			end
 
 		-- right clicking with gold lump drops random item from mobs.goblin_drops
-		elseif item:get_name() == "default:gold_lump" then
+		elseif item:get_name() == "gal:metal_gold_lump" then
 			if not minetest.setting_getbool("creative_mode") then
 				item:take_item()
 				clicker:set_wielded_item(item)
@@ -839,31 +839,38 @@ mobs:register_mob("mobs_races:goblin_king", {
 
 	do_custom = function(self)
 		search_replace(self.object:getpos(), 10, 5,
-		{"default:torch", "default:stone"},
-		"default:mossycobble")
+		{"torch:torch", "gal:stone"},
+		"gal:stone_cobble_mossy")
 	end,
 })
 mobs:register_egg("mobs_races:goblin_king", "Goblin King Egg", "default_mossycobble.png", 1)
 
 -- spawn at or below 0 near ore and dungeons and goblin lairs (areas of mossy cobble), except diggers that will dig out caves from stone and cobble goblins who create goblin lairs near stone.
 --function mobs:register_spawn(name, nodes, max_light, min_light, chance, active_object_count, max_height)
-
+--[[
 mobs:register_spawn("mobs_races:goblin_cobble", {"group:stone"}, 100, 0, 20, 3, 0)
 mobs:register_spawn("mobs_races:goblin_digger", {"group:stone"}, 100, 0, 20, 3, 0)
-mobs:register_spawn("mobs_races:goblin_coal", {"default:stone_with_coal"}, 100, 0, 1, 3, 0)
-mobs:register_spawn("mobs_races:goblin_iron", {"default:stone_with_iron"}, 100, 0, 1, 3, 0)
-mobs:register_spawn("mobs_races:goblin_gold", {"default:stone_with_gold" }, 100, 0, 1, 2, 0)
-mobs:register_spawn("mobs_races:goblin_diamond", {"default:stone_with_diamond" }, 100, 0, 1, 2, 0)
-mobs:register_spawn("mobs_races:goblin_king", {"default:stone_with_mese","default:mossycobble", }, 100, 0, 2, 1, 0)
-
+mobs:register_spawn("mobs_races:goblin_coal", {"gal:stone_with_coal"}, 100, 0, 1, 3, 0)
+mobs:register_spawn("mobs_races:goblin_iron", {"gal:stone_with_iron"}, 100, 0, 1, 3, 0)
+mobs:register_spawn("mobs_races:goblin_gold", {"gal:stone_with_gold" }, 100, 0, 1, 2, 0)
+mobs:register_spawn("mobs_races:goblin_diamond", {"gal:stone_with_diamond" }, 100, 0, 1, 2, 0)
+mobs:register_spawn("mobs_races:goblin_king", {"gal:stone_with_mese","gal:stone_cobble_mossy", }, 100, 0, 2, 1, 0)
+--]]
 --[[ function mobs:spawn_specific(name,                  nodes, neighbors,  min_light, max_light, interval, chance, active_object_count, min_height, max_height)
 mobs:spawn_specific("mobs_races:goblin_cobble", {"group:stone"}, "air", 0, 50, 1, 10, 3, -10000 , 0)
 mobs:spawn_specific("mobs_races:goblin_digger", {"group:stone"},  "air", 0, 50, 1, 10, 3, -10000 , 0)
-mobs:spawn_specific("mobs_races:goblin_coal", {"default:stone_with_coal"}, "air",0, 50, 1, 10, 3, -10000 , 0)
-mobs:spawn_specific("mobs_races:goblin_iron", {"default:stone_with_iron"}, "air", 0, 50, 1, 10, 3, -10000 , 0)
-mobs:spawn_specific("mobs_races:goblin_gold", {"default:stone_with_gold"}, "air",0, 50, 1, 10, 3, -10000 , 0)
-mobs:spawn_specific("mobs_races:goblin_diamond", {"default:stone_with_diamond" }, "air", 0, 50, 1, 10, 3, -10000 , 0)
-mobs:spawn_specific("mobs_races:goblin_king", {"default:mossycobble",},"air", 0, 50, 1, 10, 3, -10000 , 0)
-mobs:register_egg("mobs_races:goblin_cobble", "goblin egg", "default:mossycobble", 1) ]]
+mobs:spawn_specific("mobs_races:goblin_coal", {"gal:stone_with_coal"}, "air",0, 50, 1, 10, 3, -10000 , 0)
+mobs:spawn_specific("mobs_races:goblin_iron", {"gal:stone_with_iron"}, "air", 0, 50, 1, 10, 3, -10000 , 0)
+mobs:spawn_specific("mobs_races:goblin_gold", {"gal:stone_with_gold"}, "air",0, 50, 1, 10, 3, -10000 , 0)
+mobs:spawn_specific("mobs_races:goblin_diamond", {"gal:stone_with_diamond" }, "air", 0, 50, 1, 10, 3, -10000 , 0)
+mobs:spawn_specific("mobs_races:goblin_king", {"gal:stone_cobble_mossy",},"air", 0, 50, 1, 10, 3, -10000 , 0)
+--]]
+
+--mobs:register_egg("mobs_races:goblin_cobble", "goblin egg", "gal:stone_cobble_mossy", 1)
+
 
 print ("[MOD] Goblins loaded")
+
+
+
+

@@ -11,7 +11,7 @@ function ice_tomb(pos)
 				local n = minetest.env:get_node(p).name
 				if minetest.get_item_group(n, "unbreakable") == 1 or minetest.is_protected(p, "") then
 				else
-					minetest.set_node({x=i, y=j, z=k}, {name="default:ice"})
+					minetest.set_node({x=i, y=j, z=k}, {name="gal:ice"})
 				end
 			end
 		end
@@ -45,7 +45,7 @@ mobs:register_arrow("draconis:wyvern_frost_breath", {
 	hit_mob = function(self, player, pos)
 		local pos = self.object:getpos()
 		ice_tomb(pos)
-		minetest.set_node({x = 5, y = 5, z = 5}, {name="default:ice"})
+		minetest.set_node({x = 5, y = 5, z = 5}, {name="gal:ice"})
 		player:punch(self.object, 1.0, {
 			full_punch_interval = 1.0,
 			damage_groups = {fleshy = 18},
@@ -54,7 +54,7 @@ mobs:register_arrow("draconis:wyvern_frost_breath", {
 
 	-- node hit
 	hit_node = function(self, pos, node)
-		mobs:boom(self, pos, 1)
+		tnt:boom(self, pos, 1)
 		ice_tomb(pos)
 	end
 })
@@ -150,7 +150,7 @@ mobs:register_mob("draconis:ice_wyvern", {
 
 })
 
-mobs:register_egg("draconis:ice_wyvern", S("Ice Wyvern"), "draconis_frost_flame.png", 1)
+--mobs:register_egg("draconis:ice_wyvern", S("Ice Wyvern"), "draconis_frost_flame.png", 1)
 
 --  Tamed Ice Wyvern by ElCeejo
 
@@ -344,7 +344,7 @@ self.saddle = true
 	end
 })
 
-mobs:register_egg("draconis:hatched_ice_wyvern", S("Tame Ice Wyvern"), "draconis_frost_flame.png", 1, true)
+--mobs:register_egg("draconis:hatched_ice_wyvern", S("Tame Ice Wyvern"), "draconis_frost_flame.png", 1, true)
 
 -- Ice Wyvern Egg by ElCeejo
 
@@ -365,7 +365,7 @@ minetest.register_node("draconis:ice_wyvern_egg", {
 	paramtype2 = "facedir",
 	groups = {snappy = 2},
 	--sounds = default.node_sound_stone_defaults(),
-	sounds = mobs_animal.node_sound_glass_defaults(),
+	sounds = gal.node_sound_glass_defaults(),
 	drop = "draconis:ice_wyvern_egg",
 	on_construct = function(pos)
 

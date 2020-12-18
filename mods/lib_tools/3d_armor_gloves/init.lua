@@ -3,7 +3,7 @@ local S = minetest.get_translator(minetest.get_current_modname())
 
 
 if minetest.global_exists("gal") and gal.player.armor.elements then
-	table.insert(gal.player.armor.elements, "hands")
+	--table.insert(gal.player.armor.elements, "hands")
 	local mult = gal.player.armor.config.level_multiplier or 1
 	gal.player.armor.config.level_multiplier = mult * 0.9
 end

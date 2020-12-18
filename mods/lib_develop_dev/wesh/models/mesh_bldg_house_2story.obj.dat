@@ -1,0 +1,11 @@
+return {
+	collision_box = {
+		type = "fixed",
+		fixed = { { -0.4375, -0.5, -0.375, 0.4375, 0.125, 0.375, }, },
+	},
+	description = "bldg_house_2story",
+	variants = {
+		wool = "wool-72.png",
+		plain = "plain-16.png",
+	},
+}

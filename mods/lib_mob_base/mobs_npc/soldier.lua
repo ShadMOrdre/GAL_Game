@@ -1,7 +1,7 @@
 
 -- Soldier
 
-mobs:register_mob("mobs_npc:soldier", {
+mobs:register_mob("mobs_npc:soldier_1", {
 	-- animal, monster, npc
 	type = "npc",
 	passive = true,
@@ -20,7 +20,7 @@ mobs:register_mob("mobs_npc:soldier", {
 	pathfinding = 2,
 	drawtype = "front",
 	textures = {
-		{"villager.png", "npcf_skin_armor.png", "lib_materials_tool_battleaxe_large.png"},
+		{"eliteknight.png", "npcf_skin_armor.png", "default_tool_steelsword.png"},
 	},
 	visual_size = {x=1, y=1},
 	-- sounds
@@ -38,7 +38,7 @@ mobs:register_mob("mobs_npc:soldier", {
 		chance = 1, min = 1, max = 3},
 		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
-		{name = "lib_handtools:tool_axe_stone",
+		{name = "lib_handtools:tool_sword_steel",
 		chance = 3, min = 1, max = 1},
 	},
 	-- damaged by
@@ -58,7 +58,7 @@ mobs:register_mob("mobs_npc:soldier", {
 	-- right clicking with cooked meat will give npc more health
 	on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		if item:get_name() == "mobs:meat" or item:get_name() == "farming:bread" then
+		if item:get_name() == "mobs:meat" or item:get_name() == "gal:food_bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
 			if not minetest.setting_getbool("creative_mode") then
@@ -123,18 +123,16 @@ mobs:register_mob("mobs_npc:soldier", {
 	end,
 })
 
-mobs:register_egg("mobs_npc:soldier", "Soldier", "technic_wrought_iron_block.png", 1)
+mobs:register_egg("mobs_npc:soldier_1", "Soldier_1", "technic_wrought_iron_block.png", 1)
 
 
-mobs:register_mob("mobs_npc:archer", {
+mobs:register_mob("mobs_npc:soldier_2", {
 	-- animal, monster, npc
 	type = "npc",
 	passive = true,
 	damage = 7,
-	attack_type = "shoot",
+	attack_type = "dogfight",
 	attacks_monsters = true,
-	arrow = "mobs_npc:arrow",
-	shoot_offset = 2,
 	owner = "",
 	order = "stand",
 	-- health & armor
@@ -147,7 +145,7 @@ mobs:register_mob("mobs_npc:archer", {
 	-- Pathfinder = 2 to make NPCs more smart when attacking
 	pathfinding = 2,
 	textures = {
-		{"mobs_npc.png", "npcf_skin_armor.png", "bows_bow_triple_steel.png"},
+		{"templar.png", "npcf_skin_armor.png", "castle_battleaxe.png"},
 	},
 	visual_size = {x=1, y=1},
 	-- sounds
@@ -165,7 +163,7 @@ mobs:register_mob("mobs_npc:archer", {
 		chance = 1, min = 1, max = 3},
 		{name = "gal:fruit_apple",
 		chance = 2, min = 1, max = 2},
-		{name = "lib_handtools:tool_axe_stone",
+		{name = "lib_handtools:tool_sword_steel",
 		chance = 3, min = 1, max = 1},
 	},
 	-- damaged by
@@ -185,7 +183,7 @@ mobs:register_mob("mobs_npc:archer", {
 	-- right clicking with cooked meat will give npc more health
 	on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		if item:get_name() == "mobs:meat" or item:get_name() == "farming:bread" then
+		if item:get_name() == "mobs:meat" or item:get_name() == "gal:food_bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
 			if not minetest.setting_getbool("creative_mode") then
@@ -213,7 +211,7 @@ mobs:register_mob("mobs_npc:archer", {
 			end
 
 			if player_name == self.owner then
---[[
+--
 				local blacklist = minetest.formspec_escape(self.metadata.blacklist)
 				local whitelist = minetest.formspec_escape(self.metadata.whitelist)
 				local formspec = "size[8,7.5]"
@@ -228,7 +226,7 @@ mobs:register_mob("mobs_npc:archer", {
 					.."checkbox[4.0,4.5;attack_players;Attack Players;"
 						..self.metadata.attack_players.."]"
 				mobs_npc:show_formspec(player_name, self.npc_name, formspec)
---]]
+--
 
 --[[
 			local formspec = "size[8,4]"
@@ -283,6 +281,6 @@ mobs:register_mob("mobs_npc:archer", {
 	end,
 })
 
-mobs:register_egg("mobs_npc:archer", "Archer", "technic_carbon_steel_block.png", 1)
+mobs:register_egg("mobs_npc:soldier_2", "Soldier_2", "technic_carbon_steel_block.png", 1)
 
 

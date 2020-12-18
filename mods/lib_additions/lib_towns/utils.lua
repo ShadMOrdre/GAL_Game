@@ -415,14 +415,23 @@ function lib_towns.initialize_nodes(pos, width, depth, height, town_name)
 				local ptemp = {x=p.x+xi, y=p.y+yi, z=p.z+zi}
 				local node = minetest.get_node(ptemp)
 
-				if node.name == "lib_forge:furnace" or node.name == "lib_chests:chest" or node.name == "lib_books:bookshelf" then
+				if node.name == "lib_forge:furnace" or node.name == "lib_forge:dual_furnace" or node.name == "lib_chests:chest" or node.name == "lib_books:bookshelf" then
 					minetest.registered_nodes[node.name].on_construct(ptemp)
 				end
 
 				-- when chest is found -> fill with stuff
 				if node.name == "lib_chests:chest" then
-					minetest.after(3,lib_towns.fill_chest,pos)
+					minetest.after(3,lib_chests.fill_chest,pos)
 				end
+--
+				if node.name == "lib_forge:furnace" then
+					lib_forge.initialize_furnace(pos)
+				end
+
+				if node.name == "lib_forge:dual_furnace" then
+					lib_forge.initialize_dual_furnace(pos)
+				end
+--
 				if town_name and town_name ~= "" then
 					if node.name == "lib_books:bookshelf" then
 						--for t,twn in pairs(lib_towns.towns) do

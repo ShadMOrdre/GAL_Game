@@ -107,7 +107,7 @@ mobs:register_mob("mobs_races:banshee", {
 	floats = 0,
 	reach = 15,
 	attack_type = "dogfight",
-	specific_attack = {"player", "mobs_humans:human"},
+	specific_attack = {"player", "mobs_npc:npc", "mobs_npc:guard", "mobs_npc:archer"},
 	blood_amount = 0,
 	immune_to = {
 		{"all"}

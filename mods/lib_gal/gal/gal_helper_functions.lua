@@ -50,18 +50,24 @@
        end
     end
 
-    -- Optimized helper to put all items in an inventory into a drops list
-    gal.get_inventory_drops = function(pos, inventory, drops)
-       local inv = minetest.get_meta(pos):get_inventory()
-       local n = #drops
-       for i = 1, inv:get_size(inventory) do
-          local stack = inv:get_stack(inventory, i)
-          if stack:get_count() > 0 then
-             drops[n+1] = stack:to_table()
-             n = n + 1
-          end
-       end
-    end
+--
+-- optimized helper to put all items in an inventory into a drops list
+--
+
+	gal.get_inventory_drops = function(pos, inventory, drops)
+		local inv = minetest.get_meta(pos):get_inventory()
+		local n = #drops
+		for i = 1, inv:get_size(inventory) do
+			local stack = inv:get_stack(inventory, i)
+			if stack:get_count() > 0 then
+				drops[n+1] = stack:to_table()
+				n = n + 1
+			end
+		end
+	end
+
+
+    gal.key_node = ""
 
     -- NOTICE: This method is not an official part of the API yet.
     -- This method may change in future.
@@ -83,7 +89,7 @@
 
        -- Is player wielding the right key?
        local item = player:get_wielded_item()
-       if item:get_name() == "default:key" then
+       if item:get_name() == gal.key_node then
           local key_meta = item:get_meta()
 
           if key_meta:get_string("secret") == "" then

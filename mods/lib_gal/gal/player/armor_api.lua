@@ -50,10 +50,10 @@ local armor_textures = setmetatable({}, {
 
 gal.player.armor = {
 	timer = 0,
-	elements = {"head", "torso", "legs", "feet", "shield", "cape", "belt", "gauntlets"},
+	elements = {"head", "torso", "legs", "feet", "shield", "amulet", "cape", "hands", "belt", },
 	physics = {"jump", "speed", "gravity"},
 	attributes = {"heal", "fire", "water"},
-	formspec = "image[2.5,0;2,4;armor_preview]"..
+	formspec = "image[3.25,0;2,4;armor_preview]"..
 		gal.gui.gui_bg..
 		gal.gui.gui_bg_img..
 		gal.gui.gui_slots..
@@ -495,7 +495,7 @@ end
 
 gal.player.armor.get_preview = function(self, name)
 	if self.skin_mod == "appearance" then
-		local preview = appearance_get_skin_preview
+		local preview = appearance_get_skin_preview(name)
 		if skin_previews[preview] then
 			return preview
 		end
@@ -513,7 +513,7 @@ gal.player.armor.get_armor_formspec = function(self, name, listring)
 		return "label[0,0;Armor not initialized!]"
 	end
 	local formspec = gal.player.armor.formspec..
-		"list[detached:"..name.."_armor;armor;0,0.5;2,3;]"
+		"list[detached:"..name.."_armor;armor;0,0.5;3,3;]"
 	if listring == true then
 		formspec = formspec.."listring[current_player;main]"..
 			"listring[detached:"..name.."_armor;armor]"

@@ -4,7 +4,7 @@ minetest.register_craftitem("potions:fly1",{
 	liquids_pointable = false,
 	inventory_image = "potions_fly1.png",
 	affectid = "fly1",
-	on_use = affects.default_on_use,
+	on_use = gal.player.affects.default_on_use,
 })
 
 minetest.register_craftitem("potions:fly2",{
@@ -13,7 +13,7 @@ minetest.register_craftitem("potions:fly2",{
 	liquids_pointable = false,
 	inventory_image = "potions_fly2.png",
 	affectid = "fly2",
-	on_use = affects.default_on_use
+	on_use = gal.player.affects.default_on_use
 })
 
 minetest.register_craftitem("potions:fly3",{
@@ -22,7 +22,7 @@ minetest.register_craftitem("potions:fly3",{
 	liquids_pointable = false,
 	inventory_image = "potions_fly3.png",
 	affectid="fly3",
-	on_use = affects.default_on_use,	
+	on_use = gal.player.affects.default_on_use,	
 })
 
 minetest.register_craftitem("potions:gravity1",{
@@ -31,7 +31,7 @@ minetest.register_craftitem("potions:gravity1",{
 	liquids_pointable = false,
 	inventory_image = "potions_gravity1.png",
 	affectid="gravity1",
-	on_use = affects.default_on_use,	
+	on_use = gal.player.affects.default_on_use,	
 })
 
 
@@ -72,7 +72,7 @@ minetest.register_craftitem("potions:bones", {
 		if player_bones[name] ~= nil then
 			local bpos = player_bones[name]
 			bpos.y = bpos.y + 1
-			adventuretest.teleport(player,bpos)
+			gal.player.teleport(player,bpos)
 			--player:moveto(bpos)
 		else
 			minetest.chat_send_player(name,"Your bones were not found")
@@ -89,8 +89,8 @@ minetest.register_craftitem("potions:magic_replenish1", {
 	inventory_image = "potions_magic.png",
 	on_use = function ( itemstack,player,pointed_thing )
 		local name = player:get_player_name()
-		local m = pd.get_number(name,"mana")
-		pd.increment(name,"mana",5)
+		local m = gal.player.data.get_number(name,"mana")
+		gal.player.data.increment(name,"mana",5)
 		itemstack:take_item()
 		return itemstack
 	end,
@@ -103,7 +103,7 @@ minetest.register_craftitem("potions:magic_replenish2", {
 	inventory_image = "potions_magic2.png",
 	on_use = function ( itemstack,player,pointed_thing )
 		local name = player:get_player_name()
-		pd.increment(name,"mana",5)
+		gal.player.data.increment(name,"mana",5)
 		itemstack:take_item()
 		return itemstack
 	end,
@@ -116,7 +116,7 @@ minetest.register_craftitem("potions:magic_replenish3", {
 	inventory_image = "potions_magic3.png",
 	on_use = function ( itemstack,player,pointed_thing )
 		local name = player:get_player_name()
-		pd.set(name,"magic",20)
+		gal.player.data.set(name,"magic",20)
 		itemstack:take_item()
 		return itemstack
 	end,
@@ -129,7 +129,7 @@ minetest.register_craftitem("potions:antidote",{
 	inventory_image = "potions_antidote.png",	
 	on_use = function ( itemstack, player, pointed_thing )
 		local name = player:get_player_name()
-		affects.removeAffect(name,"spider_poison")
+		gal.player.affects.removeAffect(name,"spider_poison")
 		itemstack:take_item()
 		return itemstack
 	end,

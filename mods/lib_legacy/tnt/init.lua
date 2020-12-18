@@ -324,9 +324,9 @@ local function tnt_explode(pos, radius, ignore_protection, ignore_on_blast, owne
 	local drops = {}
 	local on_blast_queue = {}
 	local on_construct_queue = {}
-	basic_flame_on_construct = minetest.registered_nodes["lib_materials:fire_flame_basic"].on_construct
+	basic_flame_on_construct = minetest.registered_nodes["gal:fire_flame_basic"].on_construct
 
-	local c_fire = minetest.get_content_id("lib_materials:fire_flame_basic")
+	local c_fire = minetest.get_content_id("gal:fire_flame_basic")
 	for z = -radius, radius do
 	for y = -radius, radius do
 	local vi = a:index(pos.x + (-radius), pos.y + y, pos.z + z)
@@ -543,7 +543,7 @@ minetest.register_node("tnt:gunpowder_burning", {
 minetest.register_craft({
 	output = "tnt:gunpowder 5",
 	type = "shapeless",
-	recipe = {"default:coal_lump", "default:gravel"}
+	recipe = {"gal:mineral_coal_lump", "gal:stone_gravel"}
 })
 
 minetest.register_craftitem("tnt:tnt_stick", {
@@ -574,7 +574,7 @@ if enable_tnt then
 	minetest.register_abm({
 		label = "TNT ignition",
 		nodenames = {"group:tnt", "tnt:gunpowder"},
-		neighbors = {"fire:basic_flame", "default:lava_source", "default:lava_flowing"},
+		neighbors = {"gal:fire_basic_flame", "gal:liquid_lava_source", "gal:liquid_lava_flowing"},
 		interval = 4,
 		chance = 1,
 		action = function(pos, node)

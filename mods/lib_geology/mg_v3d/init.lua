@@ -486,28 +486,6 @@ minetest.log(S("[MOD] mg_v3d:  License: ") .. S(mg_v3d.license) .. "")
 					t_riverbed = gal.mapgen.biome_info[t_biome_name].b_riverbed
 					t_riverbed_depth = gal.mapgen.biome_info[t_biome_name].b_riverbed_depth
 
-					if theight > max_highland then
-						t_top = t_stone
-						t_filler = t_stone
-						t_stone = t_stone
-						t_water = t_water
-						t_river = t_ice
-					end
-					if theight > max_mountain then
-						t_top = t_ice
-						t_filler = t_stone
-						t_stone = t_stone
-						t_water = t_ice
-						t_river = t_ice
-					end
-
-					--river_size_factor = (mg_v3d.mg_river_size - (theight / (40 * mg_world_scale))) / 100
-					--if t_rivermap <= river_size_factor then
-					--	if theight >= (mg_v3d.water_level -1) then
-					--		t_filldepth = t_riverbed_depth - (theight / (75 * mg_world_scale))
-					--	end
-					--end
-
 					local t_node = t_ignore
 
 	--3D TERRAIN CARVING
@@ -530,6 +508,29 @@ minetest.log(S("[MOD] mg_v3d:  License: ") .. S(mg_v3d.license) .. "")
 					if n_t > 0 then
 						write_3d = true
 					end
+
+	--MOUNTAINS AND RIVERS
+					if theight > max_highland then
+						t_top = t_stone
+						t_filler = t_stone
+						t_stone = t_stone
+						t_water = t_water
+						t_river = t_ice
+					end
+					if theight > max_mountain then
+						t_top = t_ice
+						t_filler = t_stone
+						t_stone = t_stone
+						t_water = t_ice
+						t_river = t_ice
+					end
+
+					--river_size_factor = (mg_v3d.mg_river_size - (theight / (40 * mg_world_scale))) / 100
+					--if t_rivermap <= river_size_factor then
+					--	if theight >= (mg_v3d.water_level -1) then
+					--		t_filldepth = t_riverbed_depth - (theight / (75 * mg_world_scale))
+					--	end
+					--end
 
 	--NODE PLACEMENT FROM HEIGHTMAP
 

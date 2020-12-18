@@ -1070,6 +1070,7 @@ for i, stone in ipairs(gal.lib.csv.read("|", gal_geology.path .. "/" .. gal_geol
 
 			gal.lib.shapes.register_node(""..node_name.."", "pane")
 			gal.lib.shapes.register_node(""..node_name.."", "pane_centered")
+			gal.lib.shapes.register_node(""..node_name.."", "pane_pillar")
 			--gal.lib.shapes.register_door_node(""..node_name.."", "door_centered")
 			--gal.lib.shapes.register_door_node(""..node_name.."", "door_centered_right")
 			--gal.lib.shapes.register_door_node(""..node_name.."", "door_centered_with_window")

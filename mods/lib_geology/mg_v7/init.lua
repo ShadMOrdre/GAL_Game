@@ -45,20 +45,26 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 	mg_v7.use_heat_scalar = false
 
 	mg_v7.mg_world_scale = gal.mapgen.mg_world_scale
+	mg_v7.mg_alt_scale_scale = 1
+	mg_v7.mg_base_scale_scale = 1
 	local mg_world_scale = mg_v7.mg_world_scale
 	mg_v7.mg_river_size = 5
 
 	local max_highland = gal.mapgen.maxheight_highland
 	local max_mountain = gal.mapgen.maxheight_mountain
 
-	mg_v7.mg_noise_spread = 1200
+	mg_v7.mg_noise_spread = (1200 * mg_v7.mg_alt_scale_scale) * mg_v7.mg_world_scale
 	mg_v7.mg_noise_scale = 25
-	--mg_v7.mg_noise_offset = 0
-	mg_v7.mg_noise_offset = -4
-	--mg_v7.mg_noise_octaves = 8
+	mg_v7.mg_alt_noise_scale = mg_v7.mg_noise_scale * mg_v7.mg_world_scale
+	mg_v7.mg_base_noise_scale = ((mg_v7.mg_noise_scale * 2.8) * mg_v7.mg_base_scale_scale) * mg_v7.mg_world_scale
+	mg_v7.mg_noise_offset = -4 * mg_v7.mg_world_scale
 	mg_v7.mg_noise_octaves = 7
 	mg_v7.mg_noise_persist = 0.4
 	mg_v7.mg_noise_lacunarity = 2.19
+
+	mg_v7.mg_height_noise_spread = 1000 * mg_v7.mg_world_scale
+	mg_v7.mg_persist_noise_spread = 2000 * mg_v7.mg_world_scale
+
 
 	local nobj_alt = nil
 	local nbuf_alt = {}
@@ -92,20 +98,20 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 
 	local np_v7_alt = {
 		offset = mg_v7.mg_noise_offset,
-		scale = mg_v7.mg_noise_scale * mg_v7.mg_world_scale,
+		scale = mg_v7.mg_alt_noise_scale,
 		seed = 5934,
-		spread = {x = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale), y = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale), z = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale)},
+		spread = {x = mg_v7.mg_noise_spread, y = mg_v7.mg_noise_spread, z = mg_v7.mg_noise_spread},
 		octaves = mg_v7.mg_noise_octaves,
 		persist = mg_v7.mg_noise_persist,
 		lacunarity = mg_v7.mg_noise_lacunarity,
 		--flags = "defaults"
 	}
 	local np_v7_base = {
-		offset = mg_v7.mg_noise_offset,
-		scale = (mg_v7.mg_noise_scale * mg_v7.mg_world_scale) * 2.8,
+		offset = mg_v7.mg_noise_offset * mg_v7.mg_base_scale_scale,
+		scale = mg_v7.mg_base_noise_scale,
 		--seed = 82341,
 		seed = 5934,
-		spread = {x = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale), y = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale), z = (mg_v7.mg_noise_spread * mg_v7.mg_world_scale)},
+		spread = {x = mg_v7.mg_noise_spread, y = mg_v7.mg_noise_spread, z = mg_v7.mg_noise_spread},
 		octaves = mg_v7.mg_noise_octaves,
 		persist = mg_v7.mg_noise_persist,
 		lacunarity = mg_v7.mg_noise_lacunarity,
@@ -118,7 +124,7 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 		--offset = 0.25,
 		offset = 0.5,
 		scale = 1,
-		spread = {x = (1000 * mg_v7.mg_world_scale), y = (1000 * mg_v7.mg_world_scale), z = (1000 * mg_v7.mg_world_scale)},
+		spread = {x = mg_v7.mg_height_noise_spread, y = mg_v7.mg_height_noise_spread, z = mg_v7.mg_height_noise_spread},
 		seed = 4213,
 		octaves = mg_v7.mg_noise_octaves,
 		persist = mg_v7.mg_noise_persist,
@@ -128,7 +134,7 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 		lacunarity = mg_v7.mg_noise_lacunarity,
 		offset = 0.6,
 		scale = 0.1,
-		spread = {x = (2000 * mg_v7.mg_world_scale), y = (2000 * mg_v7.mg_world_scale), z = (2000 * mg_v7.mg_world_scale)},
+		spread = {x = mg_v7.mg_persist_noise_spread, y = mg_v7.mg_persist_noise_spread, z = mg_v7.mg_persist_noise_spread},
 		seed = 539,
 		octaves = 3,
 		persist = 0.6,
@@ -331,6 +337,8 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 		make_chunk = {},
 	}
 
+	local get_cell = gal.lib.voronoi.get_nearest_cell
+
 	local data = {}
 
 	minetest.register_on_generated(function(minp, maxp, seed)
@@ -360,12 +368,12 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 		----nbuf_height = nobj_base:get_2d_map(minpos2d)
 		--local nvals_base = nobj_base:get_2d_map(minpos2d, nbuf_base)
 	
-		nobj_height = nobj_height or minetest.get_perlin_map(np_v7_height, permapdims2d)
-		nbuf_height = nobj_height:get_2d_map(minpos2d)
+		--nobj_height = nobj_height or minetest.get_perlin_map(np_v7_height, permapdims2d)
+		--nbuf_height = nobj_height:get_2d_map(minpos2d)
 		----local nvals_height = nobj_height:get_2d_map(minpos2d, nbuf_height)
 	
-		nobj_persist = nobj_persist or minetest.get_perlin_map(np_v7_persist, permapdims2d)
-		nbuf_persist = nobj_persist:get_2d_map(minpos2d)
+		--nobj_persist = nobj_persist or minetest.get_perlin_map(np_v7_persist, permapdims2d)
+		--nbuf_persist = nobj_persist:get_2d_map(minpos2d)
 		----local nvals_persist = nobj_persist:get_2d_map(minpos2d, nbuf_persist)
 	
 		nobj_cliffs = nobj_cliffs or minetest.get_perlin_map(np_v7_cliffs, permapdims2d)
@@ -404,29 +412,51 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 		-- Mapgen preparation is now finished. Check the timer to know the elapsed time.
 		local t1 = os.clock()
 	
+		--local center_of_chunk = { 
+		--	x = maxp.x - gal.mapgen.mg_half_chunk_size, 
+		--	y = maxp.y - gal.mapgen.mg_half_chunk_size, 
+		--	z = maxp.z - gal.mapgen.mg_half_chunk_size
+		--}
+		--current_chunk = center_of_chunk
+
+		local center_of_chunk_x = maxp.x - (sidelen / 2)
+		local center_of_chunk_z = maxp.z - (sidelen / 2)
+
+		local mn_idx, mn_dist, mn_rise, mn_run, mn_edge = get_cell({x = center_of_chunk_x, z = center_of_chunk_z}, dist_metric, 1)
+		local pn_idx, pn_dist, pn_rise, pn_run, pn_edge = get_cell({x = center_of_chunk_x, z = center_of_chunk_z}, dist_metric, 2)
+		local cn_idx, cn_dist, cn_rise, cn_run, cn_edge = get_cell({x = center_of_chunk_x, z = center_of_chunk_z}, dist_metric, 3)
+
+		gal.mapgen.chunk_voronoi_cells = {
+			m = mn_idx,
+			p = pn_idx,
+			c = cn_idx
+		}
+
 		local write = false
 		
 		local river_size_factor = mg_v7.mg_river_size / 100
 --
 	--2D HEIGHTMAP GENERATION
 		local index2d = 0
-	
+		
+		local mean_alt = 0
+
 		for z = z0, z1 do
 			for x = x0, x1 do
 
 				index2d = (z - minp.z) * csize.x + (x - minp.x) + 1
 
-				local vterrain = 0
+				local n_terrain = 0
 
 				local nfiller = nbuf_filler_depth[z-minp.z+1][x-minp.x+1]
 				local ncliff = nbuf_cliffs[z-minp.z+1][x-minp.x+1]
 
-				--local hselect = minetest.get_perlin(np_v7_height):get_2d({x=x,y=z})
-				local hselect = nbuf_height[z-minp.z+1][x-minp.x+1]
+				local hselect = minetest.get_perlin(np_v7_height):get_2d({x=x,y=z})
+				--local hselect = nbuf_height[z-minp.z+1][x-minp.x+1]
 				local hselect = rangelim(hselect, 0, 1)
 
-				--local persist = minetest.get_perlin(np_v7_persist):get_2d({x=x,y=z})
-				local persist = nbuf_persist[z-minp.z+1][x-minp.x+1]
+				local persist = minetest.get_perlin(np_v7_persist):get_2d({x=x,y=z})
+				--local persist = nbuf_persist[z-minp.z+1][x-minp.x+1]
 
 				np_v7_base.persistence = persist;
 				local height_base = minetest.get_perlin(np_v7_base):get_2d({x=x,y=z})
@@ -435,16 +465,23 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 				local height_alt = minetest.get_perlin(np_v7_alt):get_2d({x=x,y=z})
 	
 				if (height_alt > height_base) then
-					vterrain = floor(height_alt)
+					n_terrain = floor(height_alt)
 				else
-					vterrain = floor((height_base * hselect) + (height_alt * (1 - hselect)))
+					n_terrain = floor((height_base * hselect) + (height_alt * (1 - hselect)))
 				end
+
+				local h_terrain = n_terrain * math.sin(nfiller)
+
+				local vterrain = n_terrain + h_terrain
+				--local vterrain = n_terrain
 
 
 				local t_y, t_c = get_terrain_height_cliffs(vterrain,ncliff)
+
 				gal.mapgen.heightmap[index2d] = t_y
-				mg_v7.fillermap[index2d] = nfiller
 				mg_v7.cliffmap[index2d] = t_c
+
+				mg_v7.fillermap[index2d] = nfiller
 
 				--local v_rivers = nbuf_val_river[z-minp.z+1][x-minp.x+1]
 				--local abs_rivers = abs(v_rivers)
@@ -460,7 +497,11 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 				local nhumid = nbuf_humiditymap[z-minp.z+1][x-minp.x+1] + nbuf_humidityblend[z-minp.z+1][x-minp.x+1]
 
 				gal.mapgen.biomemap[index2d] = gal.mapgen.get_biome_name(nheat,nhumid,t_y)
+				if z == center_of_chunk_z and x == center_of_chunk_x then
+					gal.mapgen.chunk_biome = gal.mapgen.biomemap[index2d]
+				end
 
+				mean_alt = mean_alt + t_y
 
 --## SPAWN SELECTION
 				if z == player_spawn_point.z then
@@ -476,6 +517,8 @@ minetest.log(S("[MOD] mg_v7:  License: ") .. S(mg_v7.license) .. "")
 
 			end
 		end
+
+		gal.mapgen.chunk_mean_altitude = mean_alt / ((x1 - x0) * (z1 - z0))
 
 		local t2 = os.clock()
 	

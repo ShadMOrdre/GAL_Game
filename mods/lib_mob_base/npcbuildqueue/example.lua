@@ -30,9 +30,9 @@ mobs:register_mob("npcbuildqueue:building_npc", {
 	run_velocity = 3,
 	jump = true,
 	drops = {
-		{name = "default:wood", chance = 1, min = 1, max = 3},
-		{name = "default:apple", chance = 2, min = 1, max = 2},
-		{name = "default:axe_stone", chance = 5, min = 1, max = 1},
+		{name = "gal:tree_default_wood", chance = 1, min = 1, max = 3},
+		{name = "gal:fruit_apple", chance = 2, min = 1, max = 2},
+		{name = "lib_handtool:tool_axe_stone", chance = 5, min = 1, max = 1},
 	},
 	water_damage = 0,
 	lava_damage = 2,

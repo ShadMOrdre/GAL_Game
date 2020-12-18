@@ -1,0 +1,48 @@
+grail_test 0.4 mod: magic
+=========================
+
+This mod provides magic.
+It depends on playereffects.
+WIP
+
+Chatcommands
+------------
+Magic:
+/enchant - Enchant wielded item.
+
+/null - Does nothing.
+
+/blind - Makes your screen black for a short time.
+
+/fast - Makes you fast for a short time.
+
+/hfast - Makes you fast for a short time (hidden effect).
+
+/slow - Makes you slow for a long time.
+
+/highjump - Makes you jump higher for a short time.
+
+/fly - Grants you the fly privilege for a minute. You keep the effect when you die.
+
+/regen - Gives you 1 half heart per second 10 times, healing you by 5 hearts in total.
+
+/slowregen - Gives you 1 half heart every 3 seconds 10 times, healing you by 5 hearts in total.
+
+Basic privs:
+/dispelall - Dispels all magical effects.
+
+/detain <player> - Detain a player.
+
+/arrest <player> - Arrest a player. (removes all privs but shout)
+
+Privs:
+/toad <player> - Turn a player into a toad and remove all privs.
+
+Ban:
+/jail <player> - Jail a player. (removes all privs but shout)
+
+Server:
+/whereis <player> - Locate a player in real life
+
+/stresstest [<effects>] - Start the stress test for Player Effects with <effects> effects.
+

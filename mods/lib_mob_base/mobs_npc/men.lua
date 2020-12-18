@@ -52,8 +52,8 @@ mobs:register_mob("mobs_npc:male1_npc",{
 	blood_amount = 35,
 	blood_offset = 0.25,
 	rewards = {
-		{chance=90, item="default:apple"},
-		{chance=60, item="experience:6_exp"},
+		{chance=90, item="gal:fruit_apple"},
+		{chance=60, item="gal:6_exp"},
 		{chance=50, item="potions:magic_replenish1"},
 	},
 })
@@ -112,8 +112,8 @@ mobs:register_mob("mobs_npc:male2_npc",{
 	blood_amount = 35,
 	blood_offset = 0.25,
 	rewards = {
-		{chance=90, item="default:apple"},
-		{chance=60, item="experience:6_exp"},
+		{chance=90, item="gal:fruit_apple"},
+		{chance=60, item="gal:6_exp"},
 		{chance=50, item="potions:magic_replenish1"},
 	},
 })
@@ -172,8 +172,8 @@ mobs:register_mob("mobs_npc:male3_npc",{
 	blood_amount = 35,
 	blood_offset = 0.25,
 	rewards = {
-		{chance=90, item="default:apple"},
-		{chance=60, item="experience:6_exp"},
+		{chance=90, item="gal:fruit_apple"},
+		{chance=60, item="gal:6_exp"},
 		{chance=50, item="potions:magic_replenish1"},
 	},
 })

@@ -50,7 +50,7 @@ minetest.log(S("[MOD] gal.player:  License: ") .. S(gal.player.license) .. "")
 		end
 	end
 
-	dofile(gal.player.path_mod.."/player_hand.lua")
+	--dofile(gal.player.path_mod.."/player_hand.lua")
 	dofile(gal.player.path_mod.."/sethome_init.lua")
 	dofile(gal.player.path_mod.."/sneakglitch_init.lua")
 	dofile(gal.player.path_mod.."/spawnpoint_init.lua")
@@ -63,6 +63,7 @@ minetest.log(S("[MOD] gal.player:  License: ") .. S(gal.player.license) .. "")
 	
 	dofile(gal.player.path_mod.."/appearance_init.lua")
 	dofile(gal.player.path_mod.."/armor_api.lua")
+	dofile(gal.player.path_mod.."/armor_config.lua")
 	
 	dofile(gal.player.path_mod.."/hud_init.lua")
 	

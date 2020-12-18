@@ -50,7 +50,7 @@ mobs:register_mob("draconis:jungle_wyvern", {
         suffocation = false,
         floats = 1,
 	owner = "",
-	follow = {"farming:cocoa_beans"},
+	follow = {"gal:item_beans_cocoa"},
         reach = 2,
         attack_chance = 30,
         attack_animals = true,
@@ -140,7 +140,7 @@ mobs:register_mob("draconis:jungle_wyvern", {
 		end
 	end,
 })
-mobs:register_egg("draconis:jungle_wyvern", S("Jungle Wyvern"), "default_jungleleaves.png", 1)
+--mobs:register_egg("draconis:jungle_wyvern", S("Jungle Wyvern"), "default_jungleleaves.png", 1)
 
 -- Jungle Wyvern Egg by ElCeejo
 
@@ -161,7 +161,7 @@ minetest.register_node("draconis:jungle_wyvern_egg", {
 	paramtype2 = "facedir",
 	groups = {snappy = 2},
 	--sounds = default.node_sound_stone_defaults(),
-	sounds = mobs_animal.node_sound_wood_defaults(),
+	sounds = gal.node_sound_wood_defaults(),
 	drop = "draconis:jungle_wyvern_egg",
 	on_construct = function(pos)
 
@@ -173,7 +173,7 @@ minetest.register_node("draconis:jungle_wyvern_egg", {
 
         local nest = minetest.get_node_or_nil(pos_under) 
 
-    	if nest.name == "default:dirt_with_rainforest_litter" then
+    	if nest.name == "gal:dirt_with_litter_rainforest" then
 
 		minetest.get_node_timer(pos):start(math.min(10), math.max(10))
                         return

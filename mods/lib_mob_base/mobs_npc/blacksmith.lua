@@ -114,7 +114,7 @@ function blacksmith_use_furnace(self,player)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 	inv:set_stack("src",1,active_blacksmiths[name].inventory)
-	inv:set_stack("fuel",1,"default:coal_lump 99")
+	inv:set_stack("fuel",1,"gal:mineral_coal_lump 99")
 	self.state = "working"
 	self.set_animation(self,"punch")
 	active_blacksmiths[name].active = true

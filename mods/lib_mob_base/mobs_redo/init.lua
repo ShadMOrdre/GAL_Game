@@ -1,8 +1,4 @@
 
---if lib_mg_continental.mg_world_scale < 0.1 then
---	return
---end
-
 local path = minetest.get_modpath("mobs")
 
 -- Mob API
@@ -18,6 +14,6 @@ dofile(path .. "/crafts.lua")
 dofile(path .. "/spawner.lua")
 
 -- Lucky Blocks
-dofile(path .. "/lucky_block.lua")
+--dofile(path .. "/lucky_block.lua")
 
-print ("[MOD] Mobs Redo loaded")
+minetest.log("action", "[MOD] Mobs Redo loaded")

@@ -1,0 +1,10 @@
+return {
+	collision_box = {
+		type = "fixed",
+		fixed = { { -0.4375, -0.5, -0.375, 0.4375, 0.125, 0.375, }, },
+	},
+	description = "bldg_house_2story_pic",
+	variants = {
+		rgb = "[combine:2x1:0,0=(px.png\\^[colorize\\:#141619):1,0=(px.png\\^[colorize\\:#63605f)",
+	},
+}

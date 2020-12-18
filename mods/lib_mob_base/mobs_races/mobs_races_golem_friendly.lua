@@ -14,7 +14,7 @@ mobs:register_mob("mobs_races:golem_friendly", {
 	textures = {
 		{"dmobs_golem.png"},
 	},
-	follow = "lib_materials:stone_cobble",
+	follow = "gal:stone_cobble",
 	blood_texture = "default_stone.png",
 	visual_size = {x=1, y=1},
 	makes_footstep_sound = true,

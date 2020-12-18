@@ -75,7 +75,7 @@ end
 minetest.register_node('smoke:block', {
 	description = 'Smoke',
 	tiles = {{
-		name = "smoke.png",
+		name = "smoke_smoke.png",
 		--backface_culling=false, -- it seems to mitigate a bit visual glitches when transparency is enabled.
 		animation = {
 			type = "vertical_frames",
@@ -84,8 +84,8 @@ minetest.register_node('smoke:block', {
 			length = 6,
 		},
 	}},
-	inventory_image = "smoke.png^[verticalframe:16:1",
-	wield_image =  "smoke.png^[verticalframe:16:1",
+	inventory_image = "smoke_smoke.png^[verticalframe:16:1",
+	wield_image =  "smoke_smoke.png^[verticalframe:16:1",
 	drawtype = "glasslike",
 	paramtype = "light",
 	use_texture_alpha=TRANSPARENCY,
@@ -156,7 +156,7 @@ end
 minetest.register_node('smoke:smog', {
 	description = 'Smog',
 	tiles = {{
-		name = "smoke.png^gui_hb_bg.png",
+		name = "smoke_smoke.png^gui_hb_bg.png",
 		--backface_culling=false,
 		animation = {
 			type = "vertical_frames",
@@ -165,8 +165,8 @@ minetest.register_node('smoke:smog', {
 			length = 6,
 		},
 	}},
-	inventory_image = "smoke.png^[verticalframe:16:1^gui_hb_bg.png",
-	wield_image =  "smoke.png^[verticalframe:16:1^gui_hb_bg.png",
+	inventory_image = "smoke_smoke.png^[verticalframe:16:1^gui_hb_bg.png",
+	wield_image =  "smoke_smoke.png^[verticalframe:16:1^gui_hb_bg.png",
 	drawtype = "glasslike",
 	paramtype = "light",
 	use_texture_alpha=TRANSPARENCY,

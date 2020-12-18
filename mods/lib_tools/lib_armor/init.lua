@@ -47,7 +47,8 @@ minetest.log(S("[MOD] lib_armor:  Loading..."))
 	
 	
 	
-	dofile(lib_armor.path_mod .. "/armor_config.lua")
+	--dofile(lib_armor.path_mod .. "/armor_config.lua")
+	dofile(lib_armor.path_mod .. "/armor.lua")
 	dofile(lib_armor.path_mod .. "/wieldview.lua")
 	dofile(lib_armor.path_mod .. "/armor_stand.lua")
 	

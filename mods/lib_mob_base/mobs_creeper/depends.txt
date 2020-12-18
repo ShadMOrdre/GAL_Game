@@ -1,0 +1,4 @@
+default?
+gal
+mobs
+mobs_monster

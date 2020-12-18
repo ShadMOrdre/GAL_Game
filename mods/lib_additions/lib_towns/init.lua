@@ -1,11 +1,8 @@
 
 
---if lib_mg_voronoi.mg_world_scale < 0.1 then
---	return
---end
---if not lib_mg_v3d and lib_mg_v3d.name == "lib_mg_v3d" then
---	return
---end
+if gal.mapgen.mg_world_scale < 0.1 then
+	return
+end
 
 lib_towns = {}
 lib_towns.name = "lib_towns"

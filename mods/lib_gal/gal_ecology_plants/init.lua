@@ -91,7 +91,7 @@ minetest.set_gen_notify("alternative_cave")
 
 	dofile(gal_ecology_plants.path.."/gal_ecology_plants_node_registration.lua")
 
-	--dofile(gal_ecology_plants.path.."/mushrooms.lua")
+	dofile(gal_ecology_plants.path.."/gal_ecology_plants_mushrooms.lua")
 
 	--dofile(gal_ecology_plants.path.."/lib_ecology_schematics.lua")
 

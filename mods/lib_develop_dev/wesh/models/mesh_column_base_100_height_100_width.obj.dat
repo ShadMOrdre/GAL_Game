@@ -1,0 +1,11 @@
+return {
+	collision_box = {
+		type = "fixed",
+		fixed = { { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, }, },
+	},
+	description = "column_base_100_height_100_width",
+	variants = {
+		wool = "wool-72.png",
+		plain = "plain-16.png",
+	},
+}

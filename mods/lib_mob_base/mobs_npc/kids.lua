@@ -3,6 +3,7 @@ local function get_kid(self,clicker)
 		self.object:set_attach(clicker,"",{x = 0, y = 5, z = -3}, {x = 0, y = 0, z = 0})
 		self.random_freq = -1
 		--default.attached_to_player[name] = self
+		gal.player.api.attached_to_player[name] = self
 end
 
 mobs:register_mob("mobs_npc:kid_lost", {
@@ -56,12 +57,12 @@ mobs:register_mob("mobs_npc:kid_lost", {
 	blood_amount = 35,
 	blood_offset = 0.25,
 	rewards = {
-		{chance=90, item="default:bread"},
-		{chance=40, item="experience:6_exp"},
+		{chance=90, item="gal:food_bread"},
+		{chance=40, item="gal:6_exp"},
 		{chance=60, item="potions:magic_replenish1"},
 	},
 	lifetimer = false,
-	avoid_nodes = {"fire:basic_flame","default:water_source","default:water_flowing","default:lava_source","default:lava_flowing"},
+	avoid_nodes = {"gal:fire_basic_flame","gal:liquid_water_source","gal:liquid_water_flowing","gal:liquid_lava_source","gal:liquid_lava_flowing"},
 	avoid_range = 4,
 	passive = false,
 	stationary = true,

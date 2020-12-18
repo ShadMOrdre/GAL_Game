@@ -3,14 +3,14 @@
 -- Heavily based on original "guards" mod by (c) Kai Gerd Müller
 -- See README.md for licensing and other information.
 local standardguardslist = {
-	["default:tinblock"] = "tin",
-	["default:mese"] = "mese",
-	["default:steelblock"] = "steel",
-	["default:copperblock"] = "copper",
-	["default:goldblock"] = "gold",
-	["default:bronzeblock"] = "bronze",
-	["default:diamondblock"] = "diamond",
-	["default:obsidian"] = "obsidian"
+	["gal:metal_tin_block"] = "tin",
+	["gal:mineral_mese_block"] = "mese",
+	["gal:metal_steel_block"] = "steel",
+	["gal:metal_copper_block"] = "copper",
+	["gal:metal_gold_block"] = "gold",
+	["gal:metal_bronze_block"] = "bronze",
+	["gal:mineral_diamond_block"] = "diamond",
+	["gal:stone_obsidian_block"] = "obsidian"
 }
 
 -------------------------------------------------------------------------------
@@ -201,8 +201,9 @@ local function register_guard(def)
 			hp_max = def.max_hp,
 			visual_size = {x = def.size, y = def.size, z = def.size},
 			visual = "mesh",
-			mesh = "character.b3d",
-			textures = {def.skin .. ".png"},
+			--mesh = "character.b3d",
+			mesh = "guard.x",
+			textures = {def.skin .. ".png", "npcf_skin_armor.png", def.weapon .. ".png"},
 			collisionbox = {-0.35, -1.0, -0.35, 0.35, 0.8, 0.35},
 			physical = true
 		},
@@ -309,11 +310,15 @@ local function register_guard(def)
 								self.nextanimation = 2
 							end
 
-							if  minetest.get_node(pos).name == "default:water_source" then
+							local n_dtype = minetest.get_node(pos).drawtype
+							--if  minetest.get_node(pos).name == "default:water_source" then
+							if  n_dtype == {"liquid"} or n_dtype == {"flowingliquid"} then
 								self.gravity = {x=0,y=0,z=0}
 							end
 
-							if  minetest.get_node(vector.add(pos,{x=0,y=1,z=0})).name == "default:water_source" then
+							local nup_dtype = minetest.get_node(vector.add(pos,{x=0,y=1,z=0})).drawtype
+							--if  minetest.get_node(vector.add(pos,{x=0,y=1,z=0})).name == "default:water_source" then
+							if nup_dtype == {"liquid"} or nup_dtype == {"flowingliquid"} then
 								self.targetvektor.y = 1
 							end
 
@@ -466,6 +471,7 @@ register_guard({
 	damage = 2,
 	name = "tin",
 	skin = "knight",
+	weapon = "lib_materials_tool_spear_steel",
 	max_hp = 20,
 	full_punch_interval = 0.75,
 	attack_anim_speed = 30,
@@ -478,6 +484,7 @@ register_guard({
 	damage = 5,
 	name = "steel",
 	skin = "knightpeculier",
+	weapon = "lib_materials_tool_spear_steel",
 	max_hp = 30,
 	size = 1,
 	speed = 3
@@ -486,7 +493,8 @@ register_guard({
 register_guard({
 	damage = 3,
 	name = "copper",
-	skin = "copper",
+	skin = "adventurer",
+	weapon = "bows_bow_triple_steel",
 	max_hp = 40,
 	attack_anim_speed = 30,
 	walk_anim_speed = 30,
@@ -497,7 +505,8 @@ register_guard({
 register_guard({
 	damage = 5,
 	name = "bronze",
-	skin = "bronze",
+	skin = "animalhunter",
+	weapon = "bows_bow_triple_steel",
 	max_hp = 40,
 	size = 1,
 	speed = 3
@@ -506,7 +515,8 @@ register_guard({
 register_guard({
 	damage = 10,
 	name = "obsidian",
-	skin = "obsidian",
+	skin = "brotherofthewolf",
+	weapon = "lib_materials_tool_battleaxe",
 	max_hp = 100,
 	size = 1,
 	full_punch_interval = 4.0,
@@ -516,7 +526,8 @@ register_guard({
 register_guard({
 	damage = 6,
 	name = "gold",
-	skin = "gold",
+	skin = "dwalin",
+	weapon = "lib_materials_tool_sword_steel",
 	max_hp = 60,
 	size = 1,
 	speed = 3
@@ -525,7 +536,8 @@ register_guard({
 register_guard({
 	damage = 8,
 	name = "mese",
-	skin = "mese",
+	skin = "sisterofthefox",
+	weapon = "lib_materials_tool_sword_steel",
 	max_hp = 80,
 	full_punch_interval = 0.75,
 	size = 1,
@@ -536,6 +548,7 @@ register_guard({
 	damage = 10,
 	name = "diamond",
 	skin = "eliteknight",
+	weapon = "lib_materials_tool_battleaxe_large",
 	max_hp = 100,
 	full_punch_interval = 0.75,
 	attack_anim_speed = 30,

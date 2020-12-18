@@ -1,33 +1,52 @@
 
--- grafitti.register_grafitti(node_name, def)  
--- -- node_name (eg. "default:stone")  
--- -- def : {  
--- --   image,  
--- --   size = {x, y}, (optional, default: {1, 1})  
--- --   center = {row, col}, (optional, default: {0, 0})  
--- --   pointable (optional, default: false)  
--- -- }  
+grafitti_brushes = {}
+grafitti_brushes.name = "grafitti_brushes"
+grafitti_brushes.ver_max = 0
+grafitti_brushes.ver_min = 1
+grafitti_brushes.ver_rev = 0
+grafitti_brushes.ver_str = grafitti_brushes.ver_max .. "." .. grafitti_brushes.ver_min .. "." .. grafitti_brushes.ver_rev
+grafitti_brushes.authorship = "ShadMOrdre, Aspiremint"
+grafitti_brushes.license = "LGLv2.1"
+grafitti_brushes.copyright = "2019"
+grafitti_brushes.path_mod = minetest.get_modpath(minetest.get_current_modname())
+grafitti_brushes.path_world = minetest.get_worldpath()
 
-grafitti.register_grafitti("grafitti_test:eye", {  
-  image = "pyramids_eye.png"
-})
-grafitti.register_grafitti("grafitti_test:man", {  
-  image = "pyramids_men.png"
-})
-grafitti.register_grafitti("grafitti_test:sun", {  
-  image = "pyramids_sun.png"
-})
 
-grafitti.set_palette_width(8)  
+grafitti_brushes.intllib = gal.intllib
+local S = grafitti_brushes.intllib
 
-grafitti.palette_build("grafitti_test:egypt_palette")  
 
-grafitti.register_brush("grafitti_test:brush_egypt", {  
-  description = "Palette Brush - Egypt",  
-  inventory_image = "palette_brush_egypt.png", 
-  wield_image = "palette_brush_egypt.png^[transformR270",
-  palette = "grafitti_test:egypt_palette",
-  recipe = {{"lib_materials:sand"}}
-})
+minetest.log(S("[MOD] grafitti_brushes:  Loading..."))
+minetest.log(S("[MOD] grafitti_brushes:  Version:") .. S(grafitti_brushes.ver_str))
+minetest.log(S("[MOD] grafitti_brushes:  Legal Info: Copyright ") .. S(grafitti_brushes.copyright) .. " " .. S(grafitti_brushes.authorship) .. "")
+minetest.log(S("[MOD] grafitti_brushes:  License: ") .. S(grafitti_brushes.license) .. "")
 
+
+	
+	dofile(grafitti_brushes.path_mod.."/brush_egyptian.lua")
+	
+	dofile(grafitti_brushes.path_mod.."/brush_runes.lua")
+	
+--[[
+	minetest.register_on_mods_loaded(function()
+		for node_name, node_def in pairs(minetest.registered_tools) do
+			if node_name and node_name ~= "" then
+				if node_def then
+					if not node_def.original_description then
+						local node_desc = node_def.description
+						minetest.override_item(node_name, {
+							--original_description = node_desc,
+							description = toolranks.create_description(node_desc, 0, 1),
+							--description = node_desc,
+							after_use = toolranks.new_afteruse,
+						})
+					end
+				end
+			end
+		end
+	end)
+--]]
+
+
+minetest.log(S("[MOD] grafitti_brushes:  Successfully loaded."))
 

@@ -27,20 +27,20 @@ SOFTWARE.
 drawers = {}
 drawers.drawer_visuals = {}
 
-if default then
-	drawers.WOOD_SOUNDS = default.node_sound_wood_defaults()
+--if default then
+	drawers.WOOD_SOUNDS = gal.node_sound_wood_defaults()
 	drawers.WOOD_ITEMSTRING = "group:wood"
-	drawers.CHEST_ITEMSTRING = "default:chest"
-elseif mcl_core then -- MineClone 2
-	drawers.WOOD_ITEMSTRING = "group:wood"
-	drawers.CHEST_ITEMSTRING = "mcl_chests:chest"
-	if mcl_sounds then
-		drawers.WOOD_SOUNDS = mcl_sounds.node_sound_wood_defaults()
-	end
-else
-	drawers.WOOD_ITEMSTRING = "wood"
-	drawers.CHEST_ITEMSTRING = "chest"
-end
+	drawers.CHEST_ITEMSTRING = "lib_chests:chest"
+--elseif mcl_core then -- MineClone 2
+--	drawers.WOOD_ITEMSTRING = "group:wood"
+--	drawers.CHEST_ITEMSTRING = "mcl_chests:chest"
+--	if mcl_sounds then
+--		drawers.WOOD_SOUNDS = mcl_sounds.node_sound_wood_defaults()
+--	end
+--else
+--	drawers.WOOD_ITEMSTRING = "wood"
+--	drawers.CHEST_ITEMSTRING = "chest"
+--end
 
 
 drawers.enable_1x1 = not core.setting_getbool("drawers_disable_1x1")

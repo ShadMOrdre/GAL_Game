@@ -28,9 +28,9 @@ mobs:register_mob("mobs_races:gnorm", {
 	fall_speed = -6,
 	fear_height = 4,
 	replace_rate = 10,
-	replace_what = {"default:apple", "default:stone", "default:stone_with_coal", "default:fence_wood"},
+	replace_what = {"gal:fruit_apple", "gal:stone", "gal:ore_stone_with_coal", "gal:tree_default_wood_fence"},
 	replace_with = "air",
-	follow = {"default:apple"},
+	follow = {"gal:fruit_apple"},
 	view_range = 14,
 	animation = {
 		speed_normal = 8,

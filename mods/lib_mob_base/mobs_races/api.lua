@@ -202,7 +202,7 @@ function object_fly(entity, dtime, speed, shoots, arrow, moving_anim, stand_anim
 		return
 	end
 	if moving_anim and moving_anim ~= nil and mobs_redo == true then
-		set_animation(entity, moving_anim)
+		gal.player.api.set_animation(entity, moving_anim)
 	end
 end
 

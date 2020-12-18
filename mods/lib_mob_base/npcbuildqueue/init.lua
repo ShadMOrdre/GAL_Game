@@ -267,4 +267,4 @@ end
 dofile(modpath.."/metafile.lua")
 
 -- Example code
---dofile(modpath.."/example.lua")
+dofile(modpath.."/example.lua")

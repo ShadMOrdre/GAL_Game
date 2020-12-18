@@ -1,6 +1,36 @@
 
 local S = mobs.intllib
 
+-- Dragon Fire
+
+minetest.register_node("draconis:dragon_fire", {
+	description = "Dragon Fire",
+	drawtype = "firelike",
+	tiles = {{
+		name = "draconis_dragon_fire_animated.png",
+		animation = {type = "vertical_frames",
+			aspect_w = 16, aspect_h = 16, length = 1},
+	}},
+	inventory_image = "draconis_dragon_fire.png",
+	light_source = 15,
+	groups = {igniter = 3, snappy=1},
+	drop = '',
+	walkable = false,
+	buildable_to = false,
+	damage_per_second = 8,
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(math.min(10), math.max(10))
+	end,
+	on_timer = function(pos)
+		local f = minetest.find_node_near(pos, 1, {"group:flammable"})
+		if not fire_enabled or not f then
+			minetest.remove_node(pos)
+			return
+		end
+		return true
+	end,
+})
+
 -- Fire Breathing
 
 function fire_breath(pos)
@@ -51,7 +81,7 @@ mobs:register_arrow("draconis:dragon_fire_breath", {
 
 	-- node hit
 	hit_node = function(self, pos, node)
-		mobs:boom(self, pos, 1)
+		tnt:boom(self, pos, 1)
 		fire_breath(pos)
 	end
 })
@@ -145,7 +175,7 @@ mobs:register_mob("draconis:fire_dragon", {
 	animation = animation_fly,
 
 })
-
+--[[
 mobs:spawn({
 	name = "draconis:fire_dragon",
 	nodes = "default:stone",
@@ -159,7 +189,7 @@ mobs:spawn({
 })
 
 mobs:register_egg("draconis:fire_dragon", S("Fire Dragon"), "fire_basic_flame.png", 1)
-
+--]]
 --  Tamed Fire Dragon by ElCeejo
 
 mobs:register_mob("draconis:hatched_fire_dragon", {
@@ -351,7 +381,7 @@ self.saddle = true
 	end
 })
 
-mobs:register_egg("draconis:hatched_fire_dragon", S("Tame Fire Dragon"), "fire_basic_flame.png", 1)
+--mobs:register_egg("draconis:hatched_fire_dragon", S("Tame Fire Dragon"), "fire_basic_flame.png", 1)
 
 -- Fire Dragon Egg by ElCeejo
 
@@ -372,7 +402,7 @@ minetest.register_node("draconis:fire_dragon_egg", {
 	paramtype2 = "facedir",
 	groups = {snappy = 2},
 	--sounds = default.node_sound_stone_defaults(),
-	sounds = mobs_animal.node_sound_stone_defaults(),
+	sounds = gal.node_sound_stone_defaults(),
 	drop = "draconis:fire_dragon_egg",
 	on_construct = function(pos)
 

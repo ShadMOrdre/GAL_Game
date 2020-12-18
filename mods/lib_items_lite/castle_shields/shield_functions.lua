@@ -10,7 +10,7 @@ castle_shields.register_shield = function(name, desc, background_color, foregrou
 		paramtype2 = "facedir",
 		paramtype = "light",
 		groups={cracky=3},
-		sounds = default.node_sound_metal_defaults(),
+		sounds = gal.node_sound_metal_defaults(),
 		node_box = {
 			type = "fixed",
 			fixed = {

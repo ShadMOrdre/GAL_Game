@@ -23,9 +23,9 @@ gravelsieve.handler = function(itemstack, user, pointed_thing)
 	end
 
 	local node = minetest.get_node(pos)
-	if node.name == "default:cobble" or node.name == "default:mossycobble" 
-			or node.name == "default:desert_cobble" then
-		node.name = "default:gravel"
+	if node.name == "gal:stone_cobble" or node.name == "gal:stone_cobble_mossy" 
+			or node.name == "gal:stone_desert_cobble" then
+		node.name = "gal:stone_gravel"
 		minetest.swap_node(pos, node)
 		minetest.sound_play({
 			name="default_dig_crumbly"},{
@@ -50,8 +50,8 @@ minetest.register_tool("gravelsieve:hammer", {
 minetest.register_craft({
 	output = "gravelsieve:hammer",
 	recipe = {
-		{"", "default:steel_ingot", ""},
-		{"", "group:stick", "default:steel_ingot"},
+		{"", "gal:metal_steel_ingot", ""},
+		{"", "group:stick", "gal:metal_steel_ingot"},
 		{"group:stick", "", ""},
 	}
 })

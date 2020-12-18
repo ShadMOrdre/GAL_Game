@@ -1,8 +1,2 @@
-affects?
-physics?
-bushes?
-flowers?
-bones?
+gal
 cottages?
-lib_player
-

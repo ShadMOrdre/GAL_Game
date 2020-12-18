@@ -85,7 +85,7 @@ minetest.set_mapgen_setting('flags','nolight',true)
 	local nbuf_humidityblend = {}
 
 	np_terrain = {
-		offset = mg_voronoi.mg_noise_offset,
+		offset = mg_voronoi.mg_noise_offset * mg_voronoi.mg_world_scale,
 		scale = mg_voronoi.mg_noise_scale * mg_voronoi.mg_world_scale,
 		seed = 5934,
 		spread = {x = (mg_voronoi.mg_noise_spread * mg_voronoi.mg_world_scale), y = (mg_voronoi.mg_noise_spread * mg_voronoi.mg_world_scale), z = (mg_voronoi.mg_noise_spread * mg_voronoi.mg_world_scale)},
@@ -212,8 +212,8 @@ minetest.set_mapgen_setting('flags','nolight',true)
 		local permapdims2d = {x = sidelen, y = sidelen, z = 0}
 		local minpos2d = {x = x0, y = z0}
 
-		nobj_terrain = nobj_terrain or minetest.get_perlin_map(np_terrain, permapdims2d)
-		nbuf_terrain = nobj_terrain:get_2d_map(minpos2d)
+		--nobj_terrain = nobj_terrain or minetest.get_perlin_map(np_terrain, permapdims2d)
+		--nbuf_terrain = nobj_terrain:get_2d_map(minpos2d)
 	
 		nobj_cliffs = nobj_cliffs or minetest.get_perlin_map(np_cliffs, permapdims2d)
 		nbuf_cliffs = nobj_cliffs:get_2d_map(minpos2d)
@@ -256,43 +256,27 @@ minetest.set_mapgen_setting('flags','nolight',true)
 		local cn_idx, cn_dist, cn_rise, cn_run, cn_edge = get_cell({x = center_of_chunk_x, z = center_of_chunk_z}, dist_metric, 3)
 		get_neighbor(cn_idx)
 
-		--local m_pos = {x=gal.lib.voronoi.points[mn_idx].x,z=gal.lib.voronoi.points[mn_idx].z}
-		--local p_pos = {x=gal.lib.voronoi.points[pn_idx].x,z=gal.lib.voronoi.points[pn_idx].z}
-		--local c_pos = {x=gal.lib.voronoi.points[cn_idx].x,z=gal.lib.voronoi.points[cn_idx].z}
-
-		--mg_voronoi.current_cell.m = mn_idx
-		--mg_voronoi.current_cell.p = pn_idx
-		--mg_voronoi.current_cell.c = cn_idx
-
-		--local mncontinental = mn_dist * v_cscale
-		--local pncontinental = pn_dist * v_pscale
-		--local cncontinental = cn_dist * v_mscale
-		--local vncontinental = (mncontinental + pncontinental + cncontinental)
-
-		local XRS = 150
-		--local XRS = 150 * mg_world_scale
-
-		----CREDITS:  Dokimi mg_tectonic
-		--local v_gradient = mncontinental / mg_base_height
-		--local v_mup = (1 - v_gradient) + (-1 * v_gradient)
-		--local v_whs = 1 - v_gradient
-		--local v_roll = XRS + (XRS * v_gradient)
-		--local v_wav = (v_whs * math.sin(mncontinental/v_roll))    -- north south wave (main ranges)
-		--local v_den_base = (v_wav ^ 3) + v_mup + ((vncontinental ^2) * v_whs)
+		gal.mapgen.chunk_voronoi_cells = {
+			m = mn_idx,
+			p = pn_idx,
+			c = cn_idx
+		}
 
 	--2D HEIGHTMAP GENERATION - Uses permapdims2d
 		local index2d = 0
 	
+		local mean_alt = 0
+
 		for z = minp.z, maxp.z do
 			for x = minp.x, maxp.x do
 	
 				index2d = (z - minp.z) * csize.x + (x - minp.x) + 1
 
-				--local nterrain = minetest.get_perlin(np_terrain):get_2d({x=x,y=z})
-				local nterrain = nbuf_terrain[z-minp.z+1][x-minp.x+1]
+				local nterrain = minetest.get_perlin(np_terrain):get_2d({x=x,y=z})
+				--local nterrain = nbuf_terrain[z-minp.z+1][x-minp.x+1]
 
 				local ncliff = nbuf_cliffs[z-minp.z+1][x-minp.x+1]
-				local n_y, n_c = get_terrain_height_cliffs(nterrain,ncliff)
+				--local n_y, n_c = get_terrain_height_cliffs(nterrain,ncliff)
 
 				local nfill = nbuf_filler_depth[z-minp.z+1][x-minp.x+1]
 				mg_voronoi.fillermap[index2d] = nfill
@@ -303,7 +287,6 @@ minetest.set_mapgen_setting('flags','nolight',true)
 				local p_idx, p_dist, p_rise, p_run, p_edge = get_cell({x = x, z = z}, dist_metric, 2)
 				local m_idx, m_dist, m_rise, m_run, m_edge = get_cell({x = x, z = z}, dist_metric, 1)
 
-				--local mcontinental = math.sin(m_dist * v_cscale)
 				local mcontinental = m_dist * v_cscale
 				local pcontinental = p_dist * v_pscale
 				local ccontinental = c_dist * v_mscale
@@ -311,41 +294,10 @@ minetest.set_mapgen_setting('flags','nolight',true)
 
 -- ## TERRAIN GENERATION
 				local vterrain = (mg_base_height - vcontinental) + (mg_base_height * 0.4)
-				------local vheight = (vterrain + nterrain) * (1/vcontinental)
-				local vheight = (vterrain + n_y) * (1/vcontinental)
-				--local vsin = math.sin((vterrain + n_y) * (1/vcontinental)) * -1
-				--local velevation = (vheight + vsin) * (mg_world_scale/0.01)
+				local vheight = (vterrain + nterrain) * (1/vcontinental)
+				--local vheight = vterrain * (1/vcontinental)
 				local velevation = vheight * (mg_world_scale/0.01)
-				----local velevation = (vterrain + n_y)
 
-				------CREDITS:  Dokimi mg_tectonic
-				--local v_gradient = vcontinental / mg_base_height
- 				--local v_mup = (1 - v_gradient) + (-1 * v_gradient)
-				--local v_whs = 1 - v_gradient
-				--local v_roll = XRS + (XRS * v_gradient)
-				--local v_wav = (v_whs * math.sin(vcontinental / v_roll))    -- north south wave (main ranges)
-				--local v_den_base = (v_wav ^3) + v_mup + ((velevation ^2) * v_whs)
-					----local t_base = 0.01 * y
-					--local t_base = 0.01 * n_y
-					--local den_soft = (den_base * 1.5) + ((nfill ^3) * 0.5) - v_gradient
-					----local t_soft = 0.03 * y - 1.5
-					--local t_soft = 0.03 * n_y - 1.5
-					--local den_allu = (den_soft * 1.01) - (v_gradient * 1.5)
-					----local t_allu = 0.056 * y - 2.98
-					--local t_allu = 0.056 * n_y - 2.98
-					--local den_sedi = (den_allu * 1.1)
-					----local t_sedi = 0.057 * y - 3.2
-					--local t_sedi = 0.057 * n_y - 3.2
-
-
-				--local v_tectonic = (v_den_base * mg_tectonic_scale) * mg_world_scale
-				----local v_tectonic = v_den_base
-				------local v_tectonic = (v_den_base * (1/vcontinental)) * (mg_world_scale/0.01)
-
-				--local t_y = v_tectonic
-				--local t_y = velevation + v_tectonic
-
-				--local t_y, t_c = get_terrain_height_cliffs((velevation + v_tectonic),ncliff)
 				local t_y, t_c = get_terrain_height_cliffs(velevation,ncliff)
 				mg_voronoi.cliffmap[index2d] = t_c
 
@@ -358,6 +310,10 @@ minetest.set_mapgen_setting('flags','nolight',true)
 				local nhumid = nbuf_humiditymap[z-minp.z+1][x-minp.x+1] + nbuf_humidityblend[z-minp.z+1][x-minp.x+1]
 
 				gal.mapgen.biomemap[index2d] = gal.mapgen.get_biome_name(nheat,nhumid,t_y)
+				if z == center_of_chunk_z and x == center_of_chunk_x then
+					gal.mapgen.chunk_biome = gal.mapgen.biomemap[index2d]
+				end
+
 
 --## EDGE MAP
 				local t_edge = ""
@@ -371,6 +327,8 @@ minetest.set_mapgen_setting('flags','nolight',true)
 					t_edge = 4
 				end
 				mg_voronoi.edgemap[index2d] = t_edge
+
+				mean_alt = mean_alt + t_y
 
 --## SPAWN SELECTION
 				if z == player_spawn_point.z then
@@ -386,6 +344,8 @@ minetest.set_mapgen_setting('flags','nolight',true)
 			end
 		end
 	
+		gal.mapgen.chunk_mean_altitude = mean_alt / ((x1 - x0) * (z1 - z0))
+
 		local t2 = os.clock()
 	
 		local t3 = os.clock()

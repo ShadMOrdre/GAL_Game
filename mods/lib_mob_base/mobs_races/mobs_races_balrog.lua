@@ -287,7 +287,7 @@ minetest.register_tool("mobs_races:balrog_whip", {
             if value <= radius * radius + 1
             and node.name == "air" and nodeu.name ~= "air"
             and not minetest.is_protected(new_pos, name) then
-               minetest.set_node(new_pos, {name = "fire:basic_flame"})
+               minetest.set_node(new_pos, {name = "gal:fire_flame_basic"})
                break
             end
          end

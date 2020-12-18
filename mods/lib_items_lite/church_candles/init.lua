@@ -269,7 +269,7 @@ church_candles.create_wall = function(ctype)
 		on_punch = church_candles.light1,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}
@@ -325,7 +325,7 @@ church_candles.create_wall = function(ctype)
 		on_punch = church_candles.snuff1,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}
@@ -372,7 +372,7 @@ church_candles.create_floor= function(ctype)
 		on_punch = church_candles.light1,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}
@@ -421,7 +421,7 @@ church_candles.create_floor= function(ctype)
 		on_punch = church_candles.snuff1,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}
@@ -467,7 +467,7 @@ church_candles.create_candelabra = function(ctype)
 		on_punch = church_candles.light3,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}
@@ -524,7 +524,7 @@ church_candles.create_candelabra = function(ctype)
 		on_punch = church_candles.snuff3,
 		sunlight_propagates = true,
 		walkable = false,
-		sounds = default.node_sound_metal_defaults({
+		sounds = gal.node_sound_metal_defaults({
 			dug = {name = "default_dig_crumbly", gain = 1.0}, 
 			dig = {name = "default_dig_crumbly", gain = 0.1},
 			}

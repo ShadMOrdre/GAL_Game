@@ -50,18 +50,28 @@ dofile(mobs_races.path.."/mobs_races_barbarians.lua")
 dofile(mobs_races.path.."/mobs_races_gnorm.lua")
 dofile(mobs_races.path.."/mobs_races_golem.lua")
 dofile(mobs_races.path.."/mobs_races_golem_friendly.lua")
+dofile(mobs_races.path.."/mummy.lua")
+dofile(mobs_races.path.."/ninja.lua")
 dofile(mobs_races.path.."/mobs_races_ogre.lua")
 dofile(mobs_races.path.."/mobs_races_orc.lua")
 dofile(mobs_races.path.."/mobs_races_skeleton.lua")
+dofile(mobs_races.path.."/skeleton.lua") -- Mesh by Morn76 Animation by Pavel_S
+dofile(mobs_races.path.."/heads.lua") -- maikerumine
 dofile(mobs_races.path.."/mobs_races_snowwalker.lua")
+--dofile(mobs_races.path.."/mobs_races_snowwalkers.lua")
+--dofile(mobs_races.path.."/mobs_races_witch.lua")
+dofile(mobs_races.path.."/oerkki.lua")
+dofile(mobs_races.path.."/mobs_races_zombie.lua")
+dofile(mobs_races.path.."/mobs_races_zombie_soldier.lua")
+dofile(mobs_races.path.."/mobs_races_zombie_brute.lua")
 
 dofile(mobs_races.path.."/mobs_races_balrog.lua")
 dofile(mobs_races.path.."/mobs_races_banshee.lua")
---dofile(mobs_races.path.."/mobs_races_dwarves.lua")
---dofile(mobs_races.path.."/mobs_races_goblins.lua")
+dofile(mobs_races.path.."/mobs_races_dwarves.lua")
+dofile(mobs_races.path.."/mobs_races_goblins.lua")
 dofile(mobs_races.path.."/mobs_races_ent.lua")
 
-
+--
 --dofile(mobs_races.path.."/dragons/dragon_normal.lua")
 --    OR
 dofile(mobs_races.path.."/dragons/main.lua")
@@ -81,6 +91,8 @@ dofile(mobs_races.path.."/arrows/dragonarrows.lua")
 dofile(mobs_races.path.."/arrows/fire_explosive.lua")
 --    OR
 --dofile(mobs_races.path.."/arrows/fire.lua")
+--
+
 dofile(mobs_races.path.."/arrows/sting.lua")
 
 dofile(mobs_races.path.."/spawn.lua")
@@ -98,7 +110,7 @@ minetest.register_node("mobs_races:golem_stone", {
 		local node1 = minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 		local node2 = minetest.env:get_node({x=pos.x, y=pos.y-2, z=pos.z}).name
 		local node3 = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
-		if node1 == "lib_materials:stone" and node2 == "lib_materials:stone" and node3 == "air" then
+		if node1 == "gal:stone" and node2 == "gal:stone" and node3 == "air" then
 		minetest.env:add_entity(pos, "mobs_races:golem_friendly")
 		minetest.env:remove_node({x=pos.x, y=pos.y-1, z=pos.z})
 		minetest.env:remove_node({x=pos.x, y=pos.y-2, z=pos.z})

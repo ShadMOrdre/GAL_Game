@@ -16,16 +16,21 @@ gal.mapgen.mg_seed = gal.mapgen.mg_params.seed
 
 --## Valid choices are:
 --## mg_v7, mg_v3d, mg_valleys2d, mg_valleys3d, mg_voronoi,
-gal.mapgen.name = "mg_v3d"
+gal.mapgen.name = "mg_v7"
 gal.mapgen.natural_slopes = true
 
 
 gal.mapgen.heightmap = {}
 gal.mapgen.biomemap = {}
 gal.mapgen.biome_info = {}
+gal.mapgen.chunk_biome = nil
+gal.mapgen.chunk_mean_altitude = nil
+gal.mapgen.chunk_voronoi_cells = nil
 
 
 gal.mapgen.mg_world_scale = 1
+gal.mapgen.mg_half_chunk_size = 40
+
 
 if gal.mapgen.name == "mg_voronoi" then
 	gal.lib.voronoi.world_scale = gal.mapgen.mg_world_scale

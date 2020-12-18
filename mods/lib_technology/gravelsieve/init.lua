@@ -108,9 +108,9 @@ minetest.after(1, add_ores)
 
 local sieve_formspec =
 	"size[8,8]"..
-	default.gui_bg..
-	default.gui_bg_img..
-	default.gui_slots..
+	gal.gui.gui_bg..
+	gal.gui.gui_bg_img..
+	gal.gui.gui_slots..
 	"list[context;src;1,1.5;1,1;]"..
 	"image[3,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]"..
 	"list[context;dst;4,0;4,4;]"..
@@ -198,7 +198,7 @@ local function add_gravel_to_dst(meta, inv)
 	meta:set_int("gravel_cnt", gravel_cnt)
 
 	if (gravel_cnt % 2) == 0 then  -- gravel or sieved gravel?
-		inv:add_item("dst", ItemStack("default:gravel"))        -- add to dest
+		inv:add_item("dst", ItemStack("gal:stone_gravel"))        -- add to dest
 	else
 		inv:add_item("dst", ItemStack("gravelsieve:sieved_gravel")) -- add to dest
 	end
@@ -210,7 +210,7 @@ local function move_src2dst(meta, pos, inv, src, dst)
 	if inv:room_for_item("dst", dst) and inv:contains_item("src", src) then
 		local res = swap_node(pos, meta, false)
 		if res then                                     -- time to move one item?
-			if src:get_name() == "default:gravel" then  -- will we find ore?
+			if src:get_name() == "gal:stone_gravel" then  -- will we find ore?
 				if not random_ore(inv, src) then        -- no ore found?
 					add_gravel_to_dst(meta, inv)
 				end
@@ -228,7 +228,7 @@ end
 local function sieve_node_timer(pos, elapsed)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
-	local gravel = ItemStack("default:gravel")
+	local gravel = ItemStack("gal:stone_gravel")
 	local gravel_sieved = ItemStack("gravelsieve:sieved_gravel")
 
 	if move_src2dst(meta, pos, inv, gravel) then
@@ -412,7 +412,7 @@ for idx = 0,4 do
 		allow_metadata_inventory_take = allow_metadata_inventory_take,
 
 		paramtype = "light",
-		sounds = default.node_sound_wood_defaults(),
+		sounds = gal.node_sound_wood_defaults(),
 		paramtype2 = "facedir",
 		sunlight_propagates = true,
 		is_ground_content = false,
@@ -475,7 +475,7 @@ if minetest.global_exists("tubelib") then
 		end,
 
 		paramtype = "light",
-		sounds = default.node_sound_wood_defaults(),
+		sounds = gal.node_sound_wood_defaults(),
 		paramtype2 = "facedir",
 		sunlight_propagates = true,
 		is_ground_content = false,
@@ -525,14 +525,14 @@ minetest.register_node("gravelsieve:sieved_gravel", {
 	description = "Sieved Gravel",
 	tiles = {"default_gravel.png"},
 	groups = {crumbly=2, falling_node=1, not_in_creative_inventory=1},
-	sounds = default.node_sound_gravel_defaults(),
+	sounds = gal.node_sound_gravel_defaults(),
 })
 
 minetest.register_node("gravelsieve:compressed_gravel", {
 	description = "Compressed Gravel",
 	tiles = {"gravelsieve_compressed_gravel.png"},
 	groups = {cracky=2, crumbly = 2, cracky = 2},
-	sounds = default.node_sound_gravel_defaults(),
+	sounds = gal.node_sound_gravel_defaults(),
 })
 
 minetest.register_craft({
@@ -598,7 +598,7 @@ if minetest.get_modpath("moreblocks") then
 		description="Compressed Gravel",
 		groups={cracky=2, crumbly=2, choppy=2, not_in_creative_inventory=1},
 		tiles = {"gravelsieve_compressed_gravel.png"},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = gal.node_sound_stone_defaults(),
 	})
 end
 

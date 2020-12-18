@@ -193,9 +193,9 @@ function gal.player.xp.miner_xp()
 
 --		local miner_xp = minetest.registered_nodes[oldnode.name].miner_xp
 		local node_xp = 0
-		if string.find(oldnode.name, ":stone_") then
+		if string.find(oldnode.name, "stone_") then
 			node_xp = 2
-		elseif string.find(oldnode.name, ":ore_") then
+		elseif string.find(oldnode.name, "ore_") then
 			node_xp = 4
 		elseif string.find(oldnode.name, "lava") then
 			node_xp = -1
